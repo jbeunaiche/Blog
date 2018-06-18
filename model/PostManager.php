@@ -1,6 +1,11 @@
 <?php
 require_once("model/Manager.php");
 
+/**
+* This class is for managing post
+* @author Julien 
+* @version 0.1.1
+*/
 class PostManager extends Manager
 {
     public function getPosts()
@@ -10,7 +15,11 @@ class PostManager extends Manager
 
         return $req;
     }
-
+/**
+* This method if for geting post
+* @param postId
+* @return post
+*/
     public function getPost($postId)
     {
         $db = $this->dbConnect();

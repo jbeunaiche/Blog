@@ -4,6 +4,7 @@
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once('model/RegisterManager.php');
+require_once('model/LoginManager.php');
 
 function listPosts()
 {
@@ -55,4 +56,15 @@ function addMember($pseudo, $mail, $password)
     else {
         header('Location: index.php');
     }
+}
+function loginMember($mail, $password)
+{
+    $logManager = new LoginManager();    
+    $user = $logManager->getMember($mail, $password);
+    var_dump($user);
+    // header ('Location: index.php');
+}
+function login()
+{
+    require('view/frontend/connectionView.php');
 }

@@ -4,10 +4,9 @@
 
 
 
-<h1>Mon super blog !</h1>
-
-<p><a href="index.php?action=addMember">Inscription</a></p>
-<p><a href="index.php?action=login">Connexion</a></p>
+<div id="title">
+<h1>Accueil</h1>
+</div>
 
 <p>Derniers billets du blog :</p>
 

@@ -43,9 +43,26 @@ try {
             else   {
                 registration();
             } 
-                    
-        
+                
         }
+        elseif ($_GET['action'] == 'loginMember') 
+        
+        {
+            if(isset($_POST['register'])){
+              
+                if (!empty($_POST['mail']) &&  !empty($_POST['password'])) {
+                 loginMember($_POST['mail'], $_POST['password']);   
+                }
+                else {
+                    throw new Exception('Tous les champs ne sont pas remplis !');
+                }
+            }
+            else   {
+                login();
+            } 
+                
+        }
+        
     }
     else {
         listPosts();
