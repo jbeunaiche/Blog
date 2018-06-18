@@ -5,6 +5,10 @@
 
 
 <h1>Mon super blog !</h1>
+
+<p><a href="index.php?action=addMember">Inscription</a></p>
+<p><a href="index.php?action=login">Connexion</a></p>
+
 <p>Derniers billets du blog :</p>
 
 

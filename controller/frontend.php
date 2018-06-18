@@ -37,3 +37,22 @@ function addComment($postId, $author, $comment)
         header('Location: index.php?action=post&id=' . $postId);
     }
 }
+function registration()
+{
+    require('view/frontend/inscriptionView.php');
+    
+}
+
+function addMember($pseudo, $mail, $password)
+{
+    $memberManager = new RegisterManager();
+
+    $affectedLines = $memberManager->newMember($pseudo, $mail, $password);
+
+    if ($affectedLines === false) {
+        throw new Exception('Impossible d\'ajouter le membre !');
+    }
+    else {
+        header('Location: index.php');
+    }
+}

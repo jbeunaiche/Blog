@@ -27,6 +27,23 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+       
+        elseif ($_GET['action'] == 'addMember') 
+        
+        {
+            if(isset($_GET['id']) > 0){
+               
+                if (!empty($_POST['pseudo']) && !empty($_POST['mail']) && !empty($_POST['password'])) {
+                    addMember($_POST['pseudo'], $_POST['mail'], $_POST['password']);
+                }
+                else {
+                    throw new Exception('Tous les champs ne sont pas remplis !');
+                }
+            }
+            else   {
+                registration();
+            } 
+                    
         
         }
     }
