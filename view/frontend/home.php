@@ -1,7 +1,4 @@
-<?php
-session_start();
-$_SESSION['pseudo'] = $pseudo;
-?>
+
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
@@ -48,7 +45,7 @@ $_SESSION['pseudo'] = $pseudo;
         </div>
       </div>
     </header>
-Bienvenue sur ce site <b><?php echo $pseudo; ?></b>.<br />
+Bienvenue sur ce site <?php echo $_SESSION['pseudo'] ?>
     <!-- Main Content -->
 <div class="container">
     <a class="nav-link" href="index.php?action=addPost"><button type="button" class="btn btn-primary">Ajout d'un article</button></a>

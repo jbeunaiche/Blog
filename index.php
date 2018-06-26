@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require('controller/frontend.php');
 
@@ -67,6 +68,8 @@ try {
         elseif ($_GET['action'] == 'addPost') 
         
         {
+             if(isset($_SESSION['pseudo']))
+                 {
             if(isset($_GET['id']) > 0){
                
                 if (!empty($_POST['title']) && !empty($_POST['content'])) {
@@ -80,7 +83,10 @@ try {
             else   {
                 added();
             }
-        
+             }
+            else {
+                    throw new Exception('Interdit');
+                }
         
     }
         

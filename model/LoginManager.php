@@ -5,14 +5,15 @@ class LoginManager extends Manager
 
 {
     
-public function getMember($mail, $password)
+public function getMember($pseudo)
     {
         $db = $this->dbConnect();
-        $member = $db->prepare("SELECT pseudo FROM members WHERE mail = ? AND password= ?");
-        $password = md5($password);
-        $member->execute(array($mail, $password));
+        $member = $db->prepare("SELECT pseudo, password FROM members WHERE pseudo = ?");
+        
+        $member->execute(array($pseudo));
+    
         return $member->fetch();
-        $_SESSION['pseudo'] = $pseudo;
-        session_start();
+        
+        
         }
 }

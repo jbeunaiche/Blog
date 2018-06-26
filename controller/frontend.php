@@ -61,9 +61,18 @@ function addMember($pseudo, $mail, $password)
 function loginMember($pseudo, $password)
 {
     $logManager = new LoginManager();    
-    $user = $logManager->getMember($pseudo, $password);
-    
+    $user = $logManager->getMember($pseudo);
+    if (password_verify($password, $user['password'] )) {
+    $_SESSION['pseudo'] = $user[0];
     header ('Location: index.php');
+
+    } else 
+    {
+    echo 'Le mot de passe est invalide.';
+}
+    
+    
+    
     
 }
 function login()
