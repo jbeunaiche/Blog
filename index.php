@@ -50,8 +50,9 @@ try {
         {
             if(isset($_POST['register'])){
               
-                if (!empty($_POST['mail']) &&  !empty($_POST['password'])) {
-                 loginMember($_POST['mail'], $_POST['password']);   
+                if (!empty($_POST['pseudo']) &&  !empty($_POST['password'])) {
+                 loginMember($_POST['pseudo'], $_POST['password']);
+                 
                 }
                 else {
                     throw new Exception('Tous les champs ne sont pas remplis !');

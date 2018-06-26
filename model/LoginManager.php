@@ -12,6 +12,7 @@ public function getMember($mail, $password)
         $member->execute(array($mail, $password));
         return $member->fetch();
         
+        
     
     
     }

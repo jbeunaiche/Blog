@@ -8,9 +8,9 @@
 <div ng-app="sample">
     <form class="form-horizontal"  method="post" action="index.php?action=loginMember">
         <div class="form-group">
-            <label class="col-md-3 control-label" for="mail">Email</label>
+            <label class="col-md-3 control-label" for="mail">Pseudo</label>
             <div class="col-md-4">
-                <input id="mail" type="email" class="form-control" name="mail" ng-model="Email" />
+                <input id="pseudo" type="text" class="form-control" name="pseudo" ng-model="Text" />
             </div>
         </div>
         <div class="form-group">

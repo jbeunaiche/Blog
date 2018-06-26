@@ -11,7 +11,7 @@ function listPosts()
     $postManager = new PostManager(); // Création d'un objet
     $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
 
-    require('view/frontend/listPostsView.php');
+    require('view/frontend/main.php');
 }
 
 function post()
@@ -57,12 +57,13 @@ function addMember($pseudo, $mail, $password)
         header('Location: index.php');
     }
 }
-function loginMember($mail, $password)
+function loginMember($pseudo, $password)
 {
     $logManager = new LoginManager();    
-    $user = $logManager->getMember($mail, $password);
-    var_dump($user);
-    // header ('Location: index.php');
+    $user = $logManager->getMember($pseudo, $password);
+    
+    header ('Location: index.php');
+    
 }
 function login()
 {

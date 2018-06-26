@@ -9,13 +9,7 @@
     </head>
         
     <body>
-        
-<nav class="nav nav-pills nav-justified">
-  <a class="nav-link active" href="index.php">Accueil</a>
-  <a class="nav-link" href="index.php?action=addMember">Inscription</a>
-  <a class="nav-link" href="index.php?action=loginMember">Connexion</a>
-</nav>
-<br><br>
+
         <?= $content ?>
         
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

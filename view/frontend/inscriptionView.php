@@ -41,14 +41,12 @@
     </form>
 </div>
 
-<?php
-if (!empty($er_password)) {
-    echo $er_password2;
-}
-?>
 
 
+
+<div id="acc">
 <p><a href="index.php">Retour à l'accueil</a></p>
+</div>
 
 <?php $content = ob_get_clean(); ?>
 
