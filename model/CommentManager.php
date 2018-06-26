@@ -1,6 +1,11 @@
 <?php
 require_once("model/Manager.php");
 
+/**
+* This class is for add comments to posts
+* @author Julien 
+* @version 0.1.1
+*/
 class CommentManager extends Manager
 {
     public function getComments($postId)

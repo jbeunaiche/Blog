@@ -1,6 +1,11 @@
 <?php
 require_once("model/Manager.php");
 
+/**
+* This class is for Register
+* @author Julien 
+* @version 0.1.1
+*/
 class RegisterManager extends Manager
 
 { 

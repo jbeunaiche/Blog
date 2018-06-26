@@ -5,6 +5,7 @@ require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once('model/RegisterManager.php');
 require_once('model/LoginManager.php');
+require_once('model/AddManager.php');
 
 function listPosts()
 {
@@ -68,4 +69,21 @@ function loginMember($pseudo, $password)
 function login()
 {
     require('view/frontend/connectionView.php');
+}
+function addPost($title, $content)
+{
+    $newPost = new AddManager();
+    $affectedLines = $newPost->addPost($title, $content);
+
+    if ($affectedLines === false) {
+        throw new Exception('Impossible d\'ajouter l\'article!');
+    }
+    else {
+        header('Location: index.php');
+    }
+}
+function added()
+{
+    require('view/frontend/postViewAdd.php');
+    
 }

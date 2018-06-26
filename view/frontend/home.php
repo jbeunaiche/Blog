@@ -47,13 +47,15 @@
     </header>
 
     <!-- Main Content -->
-
+<div class="container">
+    <a class="nav-link" href="index.php?action=addPost"><button type="button" class="btn btn-primary">Ajout d'un article</button></a>
+</div>  
 <?php
 while ($data = $posts->fetch())
 {
 ?>
-
-    <div class="container">
+<br><br>
+    
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-preview">
@@ -62,9 +64,9 @@ while ($data = $posts->fetch())
                 <?= htmlspecialchars($data['title']) ?>
                 
               </h2>
-              <h3 class="post-subtitle">
+              <p class="post-subtitle">
                 <?= nl2br(htmlspecialchars($data['content'])) ?>
-              </h3>
+              </p>
             
             <p class="post-meta">Publié <em>le <?= $data['creation_date_fr'] ?></em> </p>
             <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires...</a></em>
@@ -76,7 +78,7 @@ while ($data = $posts->fetch())
           
         </div>
       </div>
-    </div>
+   
 
 <?php
 }

@@ -2,9 +2,11 @@
 <?php $title = "Inscription"; ?>
 
 <?php ob_start(); ?>
-<div id="title">
+<div class="container">
+    
+
 <h1>Inscription</h1>
-</div>
+
 
 <div ng-app="sample">
     <form action="index.php?action=addMember&amp;id=" method="post">
@@ -44,10 +46,10 @@
 
 
 
-<div id="acc">
-<p><a href="index.php">Retour à l'accueil</a></p>
-</div>
 
+<p><a href="index.php">Retour à l'accueil</a></p>
+
+</div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

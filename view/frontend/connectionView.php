@@ -1,9 +1,10 @@
 <?php $title = "Connexion"; ?>
 
 <?php ob_start(); ?>
-<div id="title">
+<div class="container">
+
 <h1>Connexion</h1>
-</div>
+
 
 <div ng-app="sample">
     <form class="form-horizontal"  method="post" action="index.php?action=loginMember">
@@ -29,7 +30,8 @@
 </div>
 
 <p><a href="index.php">Retour à l'accueil</a></p>
-
+    
+</div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

@@ -1,8 +1,8 @@
 <?php $title = htmlspecialchars($post['title']); ?>
 
 <?php ob_start(); ?>
+<div class="container">
 
-<p><a href="index.php">Retour à l'Accueil</a></p>
 
 <div class="news">
     <h3>
@@ -40,6 +40,8 @@ while ($comment = $comments->fetch())
 <?php
 }
 ?>
+<p><a href="index.php">Retour à l'Accueil</a></p>
+</div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
