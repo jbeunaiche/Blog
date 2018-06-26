@@ -13,6 +13,7 @@ class RegisterManager extends Manager
     { 
      $db = $this->dbConnect();
      $members = $db->prepare("INSERT INTO members(pseudo, mail, password, creationTime) VALUES(?, ?, ?, NOW())");
+     $password = md5($password);
      $affectedLines = $members->execute(array($pseudo, $mail, $password)); 
      return $affectedLines; 
     } 

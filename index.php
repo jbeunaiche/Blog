@@ -1,4 +1,5 @@
 <?php
+
 require('controller/frontend.php');
 
 try {
@@ -71,6 +72,7 @@ try {
                 if (!empty($_POST['title']) && !empty($_POST['content'])) {
                     addPost($_POST['title'], $_POST['content']);
                 }
+                
                 else {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
