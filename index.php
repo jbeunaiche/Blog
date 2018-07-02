@@ -2,7 +2,7 @@
 session_start();
 
 require('controller/frontend.php');
-
+require('controller/backend.php');
 
 try {
     if (isset($_GET['action'])) {
@@ -68,10 +68,25 @@ try {
             }
             
         }
-        elseif ($_GET['action'] == 'deletePost'){
-            deletePost();
+        elseif ($_GET['action'] == 'admin') {
+            if (isset($_SESSION['pseudo'])) {
+                admin();
+            } else {
+                throw new Exception('Accès interdit');
+            }
+            
         }
-       
+        
+        elseif ($_GET['action'] == 'deletePost'){
+            if (isset($_SESSION['pseudo'])) {
+            deletePost();
+        } else{
+       throw new Exception('Suppression impossible veuillez vous connecter !');
+                    }
+        }
+        elseif ($_GET['action'] == 'logout'){
+            logout();
+        }
         
     } else {
         listPosts();
@@ -80,3 +95,5 @@ try {
 catch (Exception $e) {
     echo 'Attention : ' . $e->getMessage();
 }
+
+unset ($_SESSION['flash']);

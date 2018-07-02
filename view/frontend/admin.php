@@ -11,9 +11,7 @@
   <li class="nav-item">
     <a class="nav-link" href="#">Déconnexion</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
+  
 </ul>   
 
 
@@ -33,7 +31,7 @@ while ($data = $posts->fetch())
               </h2>
               
               
-              <a class="nav-link active" href="index.php?action=delPost&amp;id=">Supprimer l'article</a> 
+              <a href="index.php?action=deletePost&amp;id=<?= $data['id']?>">Effacer l'article... </a> 
             
             
           </div>
