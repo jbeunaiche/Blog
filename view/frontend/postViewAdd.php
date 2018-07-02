@@ -2,7 +2,7 @@
 <?php ob_start(); ?>
 <div class="container">
 
-
+Bienvenue sur ce site <?php echo $_SESSION['pseudo'] ?>
 <h2>Ajout d'un article</h2>
 
 <form action="index.php?action=addPost&amp;id=" method="post">

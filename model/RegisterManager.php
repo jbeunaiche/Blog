@@ -12,7 +12,7 @@ class RegisterManager extends Manager
     public function newMember($pseudo, $mail, $password) 
     { 
      $db = $this->dbConnect();
-     $members = $db->prepare("INSERT INTO members(pseudo, mail, password, creationTime) VALUES(?, ?, ?, NOW())");
+     $members = $db->prepare("INSERT INTO member(pseudo, mail, password, creationTime) VALUES(?, ?, ?, NOW())");
      $options = ['cost' => 12,];
      $password = password_hash($password, PASSWORD_BCRYPT, $options);
      $affectedLines = $members->execute(array($pseudo, $mail, $password)); 

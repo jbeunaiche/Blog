@@ -24,7 +24,7 @@
               <a class="nav-link" href="index.php?action=loginMember">Connexion</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Déconnexion</a>
+              <a class="nav-link" href="model/Logout.php">Déconnexion</a>
             </li>
           </ul>
         </div>
@@ -45,11 +45,11 @@
         </div>
       </div>
     </header>
-Bienvenue sur ce site <?php echo $_SESSION['pseudo'] ?>
+
     <!-- Main Content -->
-<div class="container">
+
     <a class="nav-link" href="index.php?action=addPost"><button type="button" class="btn btn-primary">Ajout d'un article</button></a>
-</div>  
+ 
 <?php
 while ($data = $posts->fetch())
 {
@@ -68,8 +68,15 @@ while ($data = $posts->fetch())
                 <?= nl2br(htmlspecialchars($data['content'])) ?>
               </p>
             
-            <p class="post-meta">Publié <em>le <?= $data['creation_date_fr'] ?></em> </p>
-            <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires...</a></em>
+<p class="post-meta">Publié <em>le <?= $data['creation_date_fr'] ?></em> </p>
+<em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires...</a></em>
+            <br>
+             <em> <a href="index.php?action=deletePost&amp;id=<?= $data['id']?>">Effacer l'article... </a> </em>
+        
+                  
+
+
+ 
           </div>
           <hr>
           

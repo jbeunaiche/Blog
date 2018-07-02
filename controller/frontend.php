@@ -6,6 +6,9 @@ require_once('model/CommentManager.php');
 require_once('model/RegisterManager.php');
 require_once('model/LoginManager.php');
 require_once('model/AddManager.php');
+require_once('model/DeleteManager.php');
+
+
 
 function listPosts()
 {
@@ -13,6 +16,7 @@ function listPosts()
     $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
 
     require('view/frontend/home.php');
+    
 }
 
 function post()
@@ -65,15 +69,11 @@ function loginMember($pseudo, $password)
     if (password_verify($password, $user['password'] )) {
     $_SESSION['pseudo'] = $user[0];
     header ('Location: index.php');
-
     } else 
     {
     echo 'Le mot de passe est invalide.';
 }
-    
-    
-    
-    
+        
 }
 function login()
 {
@@ -95,4 +95,19 @@ function added()
 {
     require('view/frontend/postViewAdd.php');
     
+}
+function deletePost()
+{
+    $delPost = new DeleteManager();
+    $affectedLines = $delPost->deletePost();
+    if ($affectedLines === false) {
+        throw new Exception('Impossible de supprimer');
+    }
+    else {
+        header('Location: index.php');
+    }
+}
+function deleted()
+{
+    require ('view/frontend/home.php');
 }

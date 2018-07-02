@@ -8,7 +8,7 @@ class LoginManager extends Manager
 public function getMember($pseudo)
     {
         $db = $this->dbConnect();
-        $member = $db->prepare("SELECT pseudo, password FROM members WHERE pseudo = ?");
+        $member = $db->prepare("SELECT pseudo, password FROM member WHERE pseudo = ?");
         
         $member->execute(array($pseudo));
     

@@ -3,98 +3,80 @@ session_start();
 
 require('controller/frontend.php');
 
+
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listPosts') {
             listPosts();
-        }
-        elseif ($_GET['action'] == 'post') {
+        } elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 post();
-            }
-            else {
+            } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        }
-        elseif ($_GET['action'] == 'addComment') {
+        } elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
                     addComment($_GET['id'], $_POST['author'], $_POST['comment']);
-                }
-                else {
+                } else {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
-            }
-            else {
+            } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        }
-       
-        elseif ($_GET['action'] == 'addMember') 
-        
-        {
-            if(isset($_GET['id']) > 0){
-               
+        } elseif ($_GET['action'] == 'addMember') {
+            if (isset($_GET['id']) > 0) {
+                
                 if (!empty($_POST['pseudo']) && !empty($_POST['mail']) && !empty($_POST['password'])) {
                     addMember($_POST['pseudo'], $_POST['mail'], $_POST['password']);
-                }
-                else {
+                } else {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
-            }
-            else   {
+            } else {
                 registration();
-            } 
+            }
+            
+        } elseif ($_GET['action'] == 'loginMember') {
+            if (isset($_POST['register'])) {
                 
-        }
-        elseif ($_GET['action'] == 'loginMember') 
-        
-        {
-            if(isset($_POST['register'])){
-              
-                if (!empty($_POST['pseudo']) &&  !empty($_POST['password'])) {
-                 loginMember($_POST['pseudo'], $_POST['password']);
-                 
-                }
-                else {
+                if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
+                    loginMember($_POST['pseudo'], $_POST['password']);
+                   
+                } else {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
-            }
-            else   {
+            } else {
                 login();
-            } 
-                
+            }
+            
+        } elseif ($_GET['action'] == 'addPost') {
+            if (isset($_SESSION['pseudo'])) {
+                if (isset($_GET['id']) > 0) {
+                    
+                    if (!empty($_POST['title']) && !empty($_POST['content'])) {
+                        addPost($_POST['title'], $_POST['content']);
+                    }
+                    
+                    else {
+                        throw new Exception('Tous les champs ne sont pas remplis !');
+                    }
+                } else {
+                    added();
+                }
+            } else {
+                throw new Exception('Accès interdit');
+            }
+            
         }
-        elseif ($_GET['action'] == 'addPost') 
+        elseif ($_GET['action'] == 'deletePost'){
+            deletePost();
+        }
+       
         
-        {
-             if(isset($_SESSION['pseudo']))
-                 {
-            if(isset($_GET['id']) > 0){
-               
-                if (!empty($_POST['title']) && !empty($_POST['content'])) {
-                    addPost($_POST['title'], $_POST['content']);
-                }
-                
-                else {
-                    throw new Exception('Tous les champs ne sont pas remplis !');
-                }
-            }
-            else   {
-                added();
-            }
-             }
-            else {
-                    throw new Exception('Interdit');
-                }
-        
-    }
-        
-    }
-    else {
+    } else {
         listPosts();
     }
 }
-catch(Exception $e) {
-    echo 'Erreur : ' . $e->getMessage();
+catch (Exception $e) {
+    echo 'Attention : ' . $e->getMessage();
 }

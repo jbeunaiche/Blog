@@ -11,7 +11,7 @@ class AddManager extends Manager
     public function addPost($title, $content)
     {
         $db = $this->dbConnect();
-        $newPost = $db->prepare('INSERT INTO posts(title, content, creation_date) VALUES(?, ?, NOW())');
+        $newPost = $db->prepare('INSERT INTO post(title, content, creation_date) VALUES(?, ?, NOW())');
         $affectedLines = $newPost->execute(array($title, $content));
         return $affectedLines;
     }      
