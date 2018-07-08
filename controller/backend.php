@@ -3,7 +3,8 @@
 require_once ('model/PostManager.php');
 require_once ('model/AddManager.php');
 require_once ('model/DeleteManager.php');
-require_once ('model/EditManager.php');
+
+
 
 function admin()
 {
@@ -62,22 +63,24 @@ function deleted()
 	require ('view/frontend/home.php');
 
 	}
-function edit() 
+
+function editView($postId) 
+{
+    $editManager = new PostManager();
+    $post = $editManager->getPost($postId);
+    require('view/frontend/editView.php');
+}
+
+function editPost($title, $content) 
 {
     $editManager = new EditManager();
-    $affectedLines = $editManager->editPost();
+    $affectedLines = $editManager->editPost($title, $content);
     if ($affectedLines === false)
 		{
-		throw new Exception('Impossible de supprimer');
+		throw new Exception('Erreur');
 		}
 	  else
 		{
-		header('Location: /project_4/index.php?action=edit');
+		header('Location: /project_4/index.php?action=admin');
 		}
-}
-function viewUpdate()
-{
-    $PostManager = new PostManager();
-    $editP = $PostManager->getPost();
-    require('view/updateView.php');
 }

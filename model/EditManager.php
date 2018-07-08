@@ -20,12 +20,6 @@ require_once("model/Manager.php");
 class EditManager extends Manager
 {
     
-    public function editPost() 
-    {
-    $db = $this->dbConnect();
-    $req = $db->prepare("UPDATE post SET WHERE id= '" . $_GET['id'] . "'");
-    $post = $req->execute(array());
-    return $post; 
-    }
+    
     
 }

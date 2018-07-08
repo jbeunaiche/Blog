@@ -36,7 +36,7 @@ while ($data = $posts->fetch())
               
               
               <em><a href="index.php?action=deletePost&amp;id=<?= $data['id']?>">Effacer l'article... </a></em>
-              <em><a href="index.php?action=editView&amp;id=<?= $data['id']?>">Modifier l'article...</a> </em>
+              <em><a href="index.php?action=edit&amp;id=<?= $data['id']?>">Modifier l'article...</a> </em>
             
             
           </div>

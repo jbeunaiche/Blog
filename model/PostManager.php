@@ -29,4 +29,17 @@ class PostManager extends Manager
 
         return $post;
     }
+/**
+* This method if for edit post
+* 
+* @return post
+*/    
+    
+    public function editPost($title, $content) 
+    {
+    $db = $this->dbConnect();
+    $req = $db->prepare('UPDATE post SET title = ?, content = ? WHERE id = ?');
+    $post = $req->execute(array($title, $content));
+    return $post; 
+    }
 }

@@ -88,21 +88,27 @@ try {
             logout();
         }
         
-        elseif ($_GET['action'] == 'editPost') {
+        elseif ($_GET['action'] == 'edit') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
-            edit();
+            editView($postId); 
         } else {
             throw new Exception('Erreur');
         }
     }
         
-        elseif ($_GET['action'] == 'editView') {
+        elseif ($_GET['action'] == 'editPost') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
-            viewUpdate();
-        } else {
-            throw new Exception('Aucun identifiant d\'article envoyé pour édition');
+            if (!empty($_POST['title']) && !empty($_POST['content'])) {
+                editPost($_GET['id'], $_POST['title'], $_POST['content']);   
+               }
+            else {
+                throw new Exception('Tous les champs ne sont pas remplis');
+            }
         }
-    }
+        else {
+            throw new Exception('Aucun identifiant de billet envoyé');
+        }
+}
         
     } else {
         listPosts();
