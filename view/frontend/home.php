@@ -14,17 +14,19 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?action=addMember">Inscription</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="index.php?action=loginMember">Connexion</a>
+                </li>
+                <?php if(isset($_SESSION['pseudo'])) :?>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?action=admin">Administration</a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link" href="index.php?action=addMember">Inscription</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?action=logout">Déconnexion</a>
                 </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>
@@ -52,7 +54,6 @@
 <?php endif; ?>
 <!-- Main Content -->
 
-<em><a href="index.php?action=addPost">Ajout d'un article...</a></em>
 
 <?php
 while ($data = $posts->fetch())
@@ -77,6 +78,9 @@ while ($data = $posts->fetch())
                 <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires...</a></em> <br>
                 <?php if(isset($_SESSION['pseudo'])) :?>
                 <em> <a href="index.php?action=deletePost&amp;id=<?= $data['id']?>">Effacer l'article... </a> </em><br>
+                <em><a href="index.php?action=addPost">Ajouter un article...</a> </em>
+                <br>
+                
                 <?php endif; ?>
             </div>
             <hr>

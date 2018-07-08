@@ -12,7 +12,6 @@ class DeleteManager extends Manager
     {
         $db = $this->dbConnect();
         $delPost = $db->prepare("DELETE FROM post WHERE id= '" . $_GET['id'] . "'");
-        $delPost->execute(array());
-        
+        $delPost->execute(array());        
     }      
 }

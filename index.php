@@ -88,6 +88,22 @@ try {
             logout();
         }
         
+        elseif ($_GET['action'] == 'editPost') {
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            edit();
+        } else {
+            throw new Exception('Erreur');
+        }
+    }
+        
+        elseif ($_GET['action'] == 'editView') {
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            viewUpdate();
+        } else {
+            throw new Exception('Aucun identifiant d\'article envoyé pour édition');
+        }
+    }
+        
     } else {
         listPosts();
     }

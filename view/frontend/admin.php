@@ -9,8 +9,12 @@
     <a class="nav-link active" href="index.php?action=addPost">Ajouter un article</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Déconnexion</a>
+    <a class="nav-link" href="index.php?action=logout">Déconnexion</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="index.php">Retour à l'Accueil</a>
+  </li>
+  
   
 </ul>   
 
@@ -31,7 +35,8 @@ while ($data = $posts->fetch())
               </h2>
               
               
-              <a href="index.php?action=deletePost&amp;id=<?= $data['id']?>">Effacer l'article... </a> 
+              <em><a href="index.php?action=deletePost&amp;id=<?= $data['id']?>">Effacer l'article... </a></em>
+              <em><a href="index.php?action=editView&amp;id=<?= $data['id']?>">Modifier l'article...</a> </em>
             
             
           </div>

@@ -16,6 +16,8 @@ require_once ('model/AddManager.php');
 
 require_once ('model/DeleteManager.php');
 
+
+
 function listPosts()
 	{
 	$postManager = new PostManager(); // Création d'un objet
@@ -23,7 +25,13 @@ function listPosts()
 	require ('view/frontend/home.php');
 
 	}
-
+function selectPost()
+{
+    $selectManager = new SelectManager();
+    $affectedLines = $selectManager->selectPost();
+    
+    require('view/frontend/updateView.php');
+}
 function post()
 	{
 	$postManager = new PostManager();
@@ -75,7 +83,7 @@ function loginMember($pseudo, $password)
 	if (password_verify($password, $user['password']))
 		{
 		$_SESSION['pseudo'] = $user[0];
-		header('Location: index.php?action=admin');
+		header('Location: /project_4/index.php?action=admin');
 		}
 	  else
 		{
@@ -89,42 +97,4 @@ function login()
 
 	}
 
-function addPost($title, $content)
-	{
-	$newPost = new AddManager();
-	$affectedLines = $newPost->addPost($title, $content);
-	if ($affectedLines === false)
-		{
-		throw new Exception('Impossible d\'ajouter l\'article!');
-		}
-	  else
-		{
-		header('Location: index.php');
-		}
-	}
 
-function added()
-	{
-	require ('view/frontend/postViewAdd.php');
-
-	}
-
-function deletePost()
-	{
-	$delPost = new DeleteManager();
-	$affectedLines = $delPost->deletePost();
-	if ($affectedLines === false)
-		{
-		throw new Exception('Impossible de supprimer');
-		}
-	  else
-		{
-		header('Location: index.php');
-		}
-	}
-
-function deleted()
-	{
-	require ('view/frontend/home.php');
-
-	}
