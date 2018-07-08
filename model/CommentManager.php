@@ -34,5 +34,13 @@ class CommentManager extends Manager
 		));
 		return $affectedLines;
 		}
+    
+    public function deleteComment()
+    {
+        $db = $this->dbConnect();
+        $delCom = $db->prepare("DELETE FROM comment WHERE id= '" . $_GET['id'] . "'");
+        $delCom->execute(array());        
+    } 
+    
 	}
 

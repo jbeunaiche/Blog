@@ -36,7 +36,8 @@ while ($comment = $comments->fetch())
 {
 ?>
     <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?> <em><a href="index.php?action=deleteCom&amp;id=<?= $comment['id']?>">Effacer le commentaire </a></em></p>
+    
 <?php
 }
 ?>

@@ -15,7 +15,7 @@ Bienvenue sur ce site <?php echo $_SESSION['pseudo'] ?>
         <textarea id="content" name="content"></textarea>
     </div>
     <div class="col-md-offset-3 col-md-9">
-                <input type="submit" class="btn btn-default" name="add" value="Ajout de l'article" />
+            <input type="submit" class="btn btn-default" name="add" value="Ajout de l'article" />
     </div>
 </form>
 

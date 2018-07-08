@@ -83,6 +83,12 @@ try {
         } else{
        throw new Exception('Suppression impossible veuillez vous connecter !');
                     }
+        }elseif ($_GET['action'] == 'deleteCom'){
+            if (isset($_SESSION['pseudo'])) {
+            deleteComments();
+        } else{
+       throw new Exception('Suppression impossible veuillez vous connecter !');
+                    }
         }
         elseif ($_GET['action'] == 'logout'){
             logout();
@@ -90,7 +96,7 @@ try {
         
         elseif ($_GET['action'] == 'edit') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
-            editView($postId); 
+            editView($_GET['id']); 
         } else {
             throw new Exception('Erreur');
         }
@@ -106,7 +112,7 @@ try {
             }
         }
         else {
-            throw new Exception('Aucun identifiant de billet envoyé');
+            throw new Exception('Erreur');
         }
 }
         

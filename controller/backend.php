@@ -58,11 +58,7 @@ function deletePost()
 		}
 	}
 
-function deleted()
-	{
-	require ('view/frontend/home.php');
 
-	}
 
 function editView($postId) 
 {
@@ -71,10 +67,10 @@ function editView($postId)
     require('view/frontend/editView.php');
 }
 
-function editPost($title, $content) 
+function editPost($id, $title, $content) 
 {
-    $editManager = new EditManager();
-    $affectedLines = $editManager->editPost($title, $content);
+    $editManager = new PostManager();
+    $affectedLines = $editManager->editPost($id, $title, $content);
     if ($affectedLines === false)
 		{
 		throw new Exception('Erreur');
@@ -84,3 +80,18 @@ function editPost($title, $content)
 		header('Location: /project_4/index.php?action=admin');
 		}
 }
+
+function deleteComments()
+	{
+	$delCom = new CommentManager();
+	$affectedLines = $delCom->deleteComment();
+	if ($affectedLines === false)
+		{
+		throw new Exception('Impossible de supprimer');
+		}
+	  else
+		{
+		header('Location: /project_4/index.php?action=admin');
+		}
+	}
+

@@ -29,10 +29,13 @@ while ($data = $posts->fetch())
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-preview">
             
-              <h2 class="post-title">
+              <h2 class="post-title"> 
                 <?= htmlspecialchars($data['title']) ?>
-                
-              </h2>
+              </h2> 
+              <p>
+                <?= htmlspecialchars($data['content']) ?>
+              </p>  
+              
               
               
               <em><a href="index.php?action=deletePost&amp;id=<?= $data['id']?>">Effacer l'article... </a></em>
