@@ -18,7 +18,7 @@
             </div>
 </form>
 
-<p><a href="index.php">Retour à l'Accueil</a></p>
+<p><a class="nav-link" href="index.php?action=admin">Retour à l'administration du site</a></p>
 </div>
 
 <?php $content = ob_get_clean(); ?>

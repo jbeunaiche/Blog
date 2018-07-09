@@ -115,6 +115,13 @@ try {
             throw new Exception('Erreur');
         }
 }
+        elseif ($_GET['action'] == 'editComment') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                editComment();
+            } else {
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
         
     } else {
         listPosts();

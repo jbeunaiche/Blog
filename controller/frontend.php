@@ -41,6 +41,15 @@ function post()
 	require ('view/frontend/postView.php');
 
 	}
+function editComment()
+	{
+	$postManager = new PostManager();
+	$commentManager = new CommentManager();
+	$post = $postManager->getPost($_GET['id']);
+	$comments = $commentManager->getComments($_GET['id']);
+	require ('view/frontend/commentView.php');
+
+	}
 
 function addComment($postId, $author, $comment)
 	{

@@ -21,7 +21,7 @@
                     <a class="nav-link" href="index.php?action=admin">Administration</a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="index.php?action=addMember">Inscription</a>
+                    <a class="nav-link" href="index.php?action=addMember">Inscription</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?action=logout">Déconnexion</a>
@@ -49,7 +49,7 @@
 </header>
 <?php if(isset($_SESSION['flash'])) : ?>
 <div class="alert alert-primary" role="alert">
- <?= $_SESSION['flash']; ?>
+    <?= $_SESSION['flash']; ?>
 </div>
 <?php endif; ?>
 <!-- Main Content -->
@@ -75,12 +75,12 @@ while ($data = $posts->fetch())
 
                 <p class="post-meta">Publié <em>le <?= $data['creation_date_fr'] ?></em> </p>
 
-                <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires...</a></em> <br>
+                <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires |</a></em> <br>
                 <?php if(isset($_SESSION['pseudo'])) :?>
-                <em> <a href="index.php?action=deletePost&amp;id=<?= $data['id']?>">Effacer l'article... </a> </em><br>
-                <em><a href="index.php?action=addPost">Ajouter un article...</a> </em>
+                <em> <a href="index.php?action=deletePost&amp;id=<?= $data['id']?>">Effacer l'article |</a> </em><br>
+                <em><a href="index.php?action=addPost">Ajouter un article </a> </em>
                 <br>
-                
+
                 <?php endif; ?>
             </div>
             <hr>
@@ -98,4 +98,3 @@ $posts->closeCursor();
     <?php $content = ob_get_clean(); ?>
 
     <?php require('template.php'); ?>
-

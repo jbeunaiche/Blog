@@ -28,6 +28,7 @@ function addPost($title, $content)
 	{
 	$newPost = new AddManager();
 	$affectedLines = $newPost->addPost($title, $content);
+   
 	if ($affectedLines === false)
 		{
 		throw new Exception('Impossible d\'ajouter l\'article!');
@@ -95,3 +96,7 @@ function deleteComments()
 		}
 	}
 
+function editComments()
+{
+    
+}
