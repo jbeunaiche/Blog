@@ -8,13 +8,8 @@ require_once ('model/PostManager.php');
 
 require_once ('model/CommentManager.php');
 
-require_once ('model/RegisterManager.php');
+require_once ('model/UserManager.php');
 
-require_once ('model/LoginManager.php');
-
-require_once ('model/AddManager.php');
-
-require_once ('model/DeleteManager.php');
 
 
 

@@ -103,9 +103,9 @@ try {
     }
         
         elseif ($_GET['action'] == 'editPost') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
+        if (isset($_POST['id']) && $_POST['id'] > 0) {
             if (!empty($_POST['title']) && !empty($_POST['content'])) {
-                editPost($_GET['id'], $_POST['title'], $_POST['content']);   
+                editPost($_POST['id'], $_POST['title'], $_POST['content']);   
                }
             else {
                 throw new Exception('Tous les champs ne sont pas remplis');

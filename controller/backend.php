@@ -1,8 +1,7 @@
 <?php
 
 require_once ('model/PostManager.php');
-require_once ('model/AddManager.php');
-require_once ('model/DeleteManager.php');
+
 
 
 
@@ -64,7 +63,8 @@ function deletePost()
 function editView($postId) 
 {
     $editManager = new PostManager();
-    $post = $editManager->getPost($postId);
+    $data = $editManager->getPost($postId);
+    
     require('view/frontend/editView.php');
 }
 

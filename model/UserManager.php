@@ -18,4 +18,16 @@ class RegisterManager extends Manager
      $affectedLines = $members->execute(array($pseudo, $mail, $password)); 
      return $affectedLines; 
     } 
+    
+    public function getMember($pseudo)
+    {
+        $db = $this->dbConnect();
+        $member = $db->prepare("SELECT pseudo, password FROM member WHERE pseudo = ?");
+        
+        $member->execute(array($pseudo));
+    
+        return $member->fetch();
+        
+        
+        }
 }
