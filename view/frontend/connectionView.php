@@ -1,3 +1,21 @@
+<?php
+require('recaptcha/autoload.php');
+
+if(isset($_POST['register'])){
+    if(isset($_POST['g-recaptcha-response'])){
+
+$recaptcha = new \ReCaptcha\ReCaptcha('6LfFD2QUAAAAALYc_-m5VTW5dvVp3ERBqj2BZER8');
+$resp = $recaptcha->verify($_POST['g-recaptcha-response']);
+if ($resp->isSuccess()) {
+    var_dump('Captcha ok');
+} else {
+    $errors = $resp->getErrorCodes();
+}
+    }   else{
+            var_dump('Captcha non rempli');
+        }
+    }
+?>
 <?php $title = "Connexion"; ?>
 
 <?php ob_start(); ?>
@@ -26,7 +44,9 @@
                 <input type="submit" class="btn btn-default" name="register" value="Je me connecte" />
             </div>
         </div>
+        <div class="g-recaptcha" data-sitekey="6LfFD2QUAAAAAECggMAv9gV_rLN7PryYZ_5IZWIV"></div>
     </form>
+    
 </div>
 
 <p><a href="index.php">Retour à l'accueil</a></p>
