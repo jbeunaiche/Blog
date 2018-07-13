@@ -73,11 +73,11 @@ while ($data = $posts->fetch())
                     <?= nl2br(htmlspecialchars($data['content'])) ?>
                 </p>
 
-                <p class="post-meta">Publié <em>le <?= $data['creation_date_fr'] ?></em> </p>
+                <p class="post-meta">Publié <em>le <?= htmlspecialchars($data['creation_date_fr']) ?></em> </p>
 
-                <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em> <br>
+                <em><a href="index.php?action=post&amp;id=<?= htmlspecialchars($data['id']) ?>">Commentaires</a></em> <br>
                 <?php if(isset($_SESSION['pseudo'])) :?>
-                <em> <a href="index.php?action=deletePost&amp;id=<?= $data['id']?>">Effacer l'article</a> </em><br>
+                <em> <a href="index.php?action=deletePost&amp;id=<?= htmlspecialchars($data['id'])?>">Effacer l'article</a> </em><br>
                 <em><a href="index.php?action=addPost">Ajouter un article</a> </em>
                 <br>
 

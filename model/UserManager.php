@@ -6,7 +6,7 @@ require_once("model/Manager.php");
 * @author Julien 
 * @version 0.1.1
 */
-class RegisterManager extends Manager
+class UserManager extends Manager
 
 { 
     public function newMember($pseudo, $mail, $password) 

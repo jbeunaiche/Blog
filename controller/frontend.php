@@ -20,13 +20,7 @@ function listPosts()
 	require ('view/frontend/home.php');
 
 	}
-function selectPost()
-{
-    $selectManager = new SelectManager();
-    $affectedLines = $selectManager->selectPost();
-    
-    require('view/frontend/updateView.php');
-}
+
 function post()
 	{
 	$postManager = new PostManager();
@@ -68,7 +62,7 @@ function registration()
 
 function addMember($pseudo, $mail, $password)
 	{
-	$memberManager = new RegisterManager();
+	$memberManager = new UserManager();
 	$affectedLines = $memberManager->newMember($pseudo, $mail, $password);
 	if ($affectedLines === false)
 		{
@@ -82,7 +76,7 @@ function addMember($pseudo, $mail, $password)
 
 function loginMember($pseudo, $password)
 	{
-	$logManager = new LoginManager();
+	$logManager = new UserManager();
 	$user = $logManager->getMember($pseudo);
 	if (password_verify($password, $user['password']))
 		{

@@ -41,7 +41,7 @@ while ($comment = $comments->fetch())
         <p>
             <?= nl2br(htmlspecialchars($comment['comment'])) ?>
                 <?php if(isset($_SESSION['pseudo'])) :?>
-                <em><a href="index.php?action=deleteCom&amp;id=<?= $comment['id']?>">Effacer le commentaire </a></em></p>
+                <em><a href="index.php?action=deleteCom&amp;id=<?= htmlspecialchars($comment['id'])?>">Effacer le commentaire </a></em></p>
         <?php endif; ?>
         <?php
 }

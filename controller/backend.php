@@ -25,7 +25,7 @@ function logout()
 
 function addPost($title, $content)
 	{
-	$newPost = new AddManager();
+	$newPost = new PostManager();
 	$affectedLines = $newPost->addPost($title, $content);
    
 	if ($affectedLines === false)
@@ -46,7 +46,7 @@ function added()
 
 function deletePost()
 	{
-	$delPost = new DeleteManager();
+	$delPost = new PostManager();
 	$affectedLines = $delPost->deletePost();
 	if ($affectedLines === false)
 		{

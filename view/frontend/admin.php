@@ -39,9 +39,9 @@ while ($data = $posts->fetch())
 
 
 
-                    <em><a href="index.php?action=deletePost&amp;id=<?= $data['id']?>">Effacer l'article - </a></em>
-                    <em><a href="index.php?action=edit&amp;id=<?= $data['id']?>">Modifier l'article -</a> </em>
-                    <em><a href="index.php?action=editComment&amp;id=<?= $data['id'] ?>">Gérer les commentaires de l'article </a></em> <br>
+                    <em><a href="index.php?action=deletePost&amp;id=<?= htmlspecialchars($data['id'])?>">Effacer l'article - </a></em>
+                    <em><a href="index.php?action=edit&amp;id=<?= htmlspecialchars($data['id'])?>">Modifier l'article -</a> </em>
+                    <em><a href="index.php?action=editComment&amp;id=<?= htmlspecialchars($data['id']) ?>">Gérer les commentaires de l'article </a></em> <br>
 
 
                 </div>
