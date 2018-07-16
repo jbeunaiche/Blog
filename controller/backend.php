@@ -27,7 +27,7 @@ function addPost($title, $content)
 	{
 	$newPost = new PostManager();
 	$affectedLines = $newPost->addPost($title, $content);
-    $_SESSION['flash'] = 'Article ajouté';
+    
     
 	if ($affectedLines === false)
 		{
@@ -35,8 +35,9 @@ function addPost($title, $content)
 		}
 	  else
 		{
+        $_SESSION['flash'] = 'Article ajouté';
 		header('Location: /project_4/index.php?action=admin');
-        
+        exit();
 		}
 	}
 
@@ -97,4 +98,3 @@ function deleteComments()
 		header("Location:".$_SERVER['HTTP_REFERER']."");
 		}
 	}
-

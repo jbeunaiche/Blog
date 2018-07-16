@@ -37,7 +37,7 @@ try {
             }
             
         } elseif ($_GET['action'] == 'loginMember') {
-            if (isset($_POST['register'])) {
+            if (isset($_POST['login'])) {
                 
                 if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
                     loginMember($_POST['pseudo'], $_POST['password']);
