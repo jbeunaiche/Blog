@@ -122,7 +122,13 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
-        
+        elseif ($_GET['action'] == 'signalCom') {
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            signalCom($_GET['id']); 
+        } else {
+            throw new Exception('Erreur');
+        }
+    }
     } else {
         listPosts();
     }

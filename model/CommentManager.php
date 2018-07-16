@@ -42,5 +42,12 @@ class CommentManager extends Manager
         $delCom->execute(array());        
     } 
     
-	}
+	
 
+    public function signalComment($postId) {
+    $db = $this->dbConnect();
+    $comment = $db->prepare("UPDATE comment SET status='1' WHERE id=".$_GET['id']);
+    $affectedLines = $comment->execute(array($postId));
+    return $affectedLines;
+}
+}

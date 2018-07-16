@@ -27,7 +27,8 @@ function addPost($title, $content)
 	{
 	$newPost = new PostManager();
 	$affectedLines = $newPost->addPost($title, $content);
-   
+    $_SESSION['flash'] = 'Article ajouté';
+    
 	if ($affectedLines === false)
 		{
 		throw new Exception('Impossible d\'ajouter l\'article!');
@@ -35,6 +36,7 @@ function addPost($title, $content)
 	  else
 		{
 		header('Location: /project_4/index.php?action=admin');
+        
 		}
 	}
 
@@ -92,11 +94,7 @@ function deleteComments()
 		}
 	  else
 		{
-		header('Location: /project_4/index.php?action=admin');
+		header("Location:".$_SERVER['HTTP_REFERER']."");
 		}
 	}
 
-function editComments()
-{
-    
-}

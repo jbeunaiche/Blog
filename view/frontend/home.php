@@ -63,26 +63,19 @@ while ($data = $posts->fetch())
 
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="post-preview">
-
-                <h2 class="post-title">
-                    <?= htmlspecialchars($data['title']) ?>
-
-                </h2>
-                <p class="post-subtitle">
-                    <?= nl2br(htmlspecialchars($data['content'])) ?>
-                </p>
-
-                <p class="post-meta">Publié <em>le <?= htmlspecialchars($data['creation_date_fr']) ?></em> </p>
-
-                <em><a href="index.php?action=post&amp;id=<?= htmlspecialchars($data['id']) ?>">Commentaires</a></em> <br>
-                <?php if(isset($_SESSION['pseudo'])) :?>
-                <em> <a href="index.php?action=deletePost&amp;id=<?= htmlspecialchars($data['id'])?>">Effacer l'article</a> </em><br>
-                <em><a href="index.php?action=addPost">Ajouter un article</a> </em>
-                <br>
-
-                <?php endif; ?>
+            
+            <div class="card mb-3">
+                <img class="card-img-top" src='public/images/alaska.jpg' alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><?= htmlspecialchars($data['title']) ?></h5>
+                    <p class="card-text"><?= nl2br(htmlspecialchars($data['content'])) ?></p>
+                    <p class="card-text"><small class="text-muted">Publié <em>le <?= htmlspecialchars($data['creation_date_fr']) ?></em></small></p>
+                 <em><a href="index.php?action=post&amp;id=<?= htmlspecialchars($data['id']) ?>">Commentaires</a></em>   
+                </div>
             </div>
+
+               
+            
             <hr>
 
         </div>

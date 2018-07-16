@@ -2,24 +2,24 @@
 
 <?php ob_start(); ?>
 
-<br><br>
-
-<ul class="nav flex-column">
-    <li class="nav-item">
-        <a class="nav-link active" href="index.php?action=addPost">Ajouter un article</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="index.php?action=logout">Déconnexion</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="index.php">Retour à l'Accueil</a>
-    </li>
-
-
-</ul>
 
 
 
+
+<nav class="navbar navbar-inverse">
+  <ul class="nav navbar-nav">
+    <li><a href="index.php?action=addPost">Ajouter un article</a></li>
+    <li><a href="index.php?action=logout">Déconnexion</a></li>
+    <li><a href="index.php">Acueil du site</a></li>
+  </ul>
+  
+</nav>
+
+ <?php if(isset($_SESSION['flash'])) : ?>
+<div class="alert alert-success" role="alert">
+    <?= $_SESSION['flash']; ?>
+</div>
+<?php endif; ?>
 <?php
 while ($data = $posts->fetch())
 {
@@ -31,11 +31,9 @@ while ($data = $posts->fetch())
                 <div class="post-preview">
 
                     <h2 class="post-title">
-                        <?= htmlspecialchars($data['title']) ?>
+                    Article : <?= htmlspecialchars($data['title']) ?>
                     </h2>
-                    <p>
-                        <?= htmlspecialchars($data['content']) ?>
-                    </p>
+                   
 
 
 
@@ -52,12 +50,14 @@ while ($data = $posts->fetch())
 
             </div>
         </div>
+   
     </div>
 
     <?php
 }
 $posts->closeCursor();
 ?>
+
     <?php $content = ob_get_clean(); ?>
 
     <?php require('template.php'); ?>

@@ -95,4 +95,14 @@ function login()
 
 	}
 
-
+function signalCom($postId) {
+    $signalCom = new CommentManager();
+    $affectedLines = $signalCom->signalComment($postId);
+    $_SESSION['flash'] = 'Commentaire signalé !';
+    if ($affectedLines === false) {
+        throw new Exception('Erreur');
+    }
+    else {
+        header("Location:".$_SERVER['HTTP_REFERER']."");
+    }
+}
