@@ -20,6 +20,7 @@
     <?= $_SESSION['flash']; ?>
 </div>
 <?php endif; ?>
+
 <?php
 while ($data = $posts->fetch())
 {
