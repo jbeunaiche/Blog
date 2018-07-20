@@ -11,7 +11,7 @@ class PostManager extends Manager
     public function getPosts()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM post ORDER BY creation_date DESC LIMIT 0, 5');
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS created_fr FROM post ORDER BY created DESC LIMIT 0, 5');
 
         return $req;
     }
@@ -23,7 +23,7 @@ class PostManager extends Manager
     public function getPost($postId)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM post WHERE id = ?');
+        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS created_fr FROM post WHERE id = ?');
         $req->execute(array($postId));
         $post = $req->fetch();
 
@@ -50,7 +50,7 @@ class PostManager extends Manager
 public function addPost($title, $content)
     {
         $db = $this->dbConnect();
-        $newPost = $db->prepare('INSERT INTO post(title, content, creation_date) VALUES(?, ?, NOW())');
+        $newPost = $db->prepare('INSERT INTO post(title, content, created) VALUES(?, ?, NOW())');
         $affectedLines = $newPost->execute(array($title, $content));
         return $affectedLines;
     } 

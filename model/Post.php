@@ -4,9 +4,33 @@ class Post
   private $_id;
   private $_title;
   private $_content;
-  private $_creation_date;
+  private $_created;
   
-  // Getters    
+  public function __construct($value = [])
+	{
+		if(!empty($value))
+		{
+			$this->hydrate($value);
+		}
+	}
+    
+  public function hydrate(array $data)
+{
+  foreach ($data as $key => $value)
+  {
+    // On récupère le nom du setter correspondant à l'attribut.
+    $method = 'set'.ucfirst($key);
+        
+    // Si le setter correspondant existe.
+    if (method_exists($this, $method))
+    {
+      // On appelle le setter.
+      $this->$method($value);
+    }
+  }
+}
+
+  // Getters  
     
   public function id() 
   {
@@ -14,7 +38,7 @@ class Post
   }
         
   public function title()
-  {
+{
       return $this->_title;
   }
         
@@ -23,31 +47,44 @@ class Post
       return $this->_content;
   }
     
-  public function creation_date() 
+  public function created() 
   {
-      return $this->_creation_date;
+      return $this->_created;
   }
  
     
   // Setters 
     
-  public function setId($id) 
-  {
+  public function setId($id)
       
+    $id = (int)$id;
+  {       
+    if ($id > 0)
+    {
+      
+      $this->_id = $id;
+    }
   }  
     
   public function setTitle($title) 
   {
-      
+      if (is_string($title))
+    {
+      $this->_title = $title;
+    }
   } 
 
   public function setContent($content) 
   {
-      
+      if (is_string($content))
+    {
+      $this->_content = $content;
+    }
   } 
     
-  public function setCreationDate($creation_date) 
+  public function setCreated(DateTime, $created) 
   {
-      
+      $this->_created = $created;
   } 
 }
+
