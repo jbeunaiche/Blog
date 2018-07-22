@@ -2,10 +2,10 @@
 class Post
 {
   private $_id;
-  private $_post_id;
+  private $_postid;
   private $_author;
   private $_comment;
-  private $_comment_date;
+  private $_createdCom;
   private $_status;
   
   public function __construct($value = [])
@@ -31,6 +31,81 @@ class Post
     }
   }
 }
+    public function id() 
+  {
+      return $this->_id;
+  }
+        
+  public function postid()
+{
+      return $this->_postid;
+  }
+        
+  public function author()
+  {
+      return $this->_author;
+  }
+    
+  public function comment() 
+  {
+      return $this->_comment;
+  }
+    public function createdCom() 
+  {
+      return $this->_createdCom;
+  }
+    public function status() 
+  {
+      return $this->_status;
+  }
+ 
+    
+  // Setters 
+    
+  public function setId($id)
+      
+    $id = (int)$id;
+  {       
+    if ($id > 0)
+    {
+      
+      $this->_id = $id;
+    }
+  }
+    public function setPostid($id)
+      
+    $id = (int)$id;
+  {       
+    if ($id > 0)
+    {
+      
+      $this->_postid = $postid;
+    }
+  }  
+    
+  public function setAuthor($author) 
+  {
+      if (is_string($author))
+    {
+      $this->_author = $author;
+    }
+  } 
+
+  public function setComment($comment) 
+  {
+      if (is_string($comment))
+    {
+      $this->_comment = $comment;
+    }
+  } 
+    
+  public function setCreatedCom(DateTime, $CreatedCom) 
+  {
+      $this->_CreatedCom = $CreatedCom;
+  }
+   
+		}
+
     
     
     

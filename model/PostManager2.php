@@ -57,7 +57,7 @@ class PostManager
     
     $listPosts = $req->fetchAll();
 
-    // On parcourt notre liste de news pour pouvoir placer des instances de DateTime en guise de dates d'ajout et de modification.
+    
     foreach ($listPosts as $post)
     {
       $post->setCreated(new DateTime($post->Created()));

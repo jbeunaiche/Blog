@@ -85,6 +85,8 @@ class Post
   public function setCreated(DateTime, $created) 
   {
       $this->_created = $created;
-  } 
+  }
+    
+  
 }
 
