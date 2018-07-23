@@ -13,7 +13,7 @@ require_once ('tools/Recaptcha.php');
 function addPost()
 	{
 	$newPost = new PostManager();
-	$affectedLines = $newPost->add(title, content);
+	$affectedLines = $newPost->add($Post);
     
     
 	if ($affectedLines === false)
