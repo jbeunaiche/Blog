@@ -7,7 +7,7 @@
     <div class="news">
         <h3>
             <?= htmlspecialchars($post['title']) ?>
-                <em>le <?= $post['creation_date_fr'] ?></em>
+                <em>le <?= $post['created'] ?></em>
         </h3>
 
         <p>
@@ -36,7 +36,7 @@ while ($comment = $comments->fetch())
 {
 ?>
         <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le
-            <?= $comment['comment_date_fr'] ?>
+            <?= $comment['cretedCom'] ?>
         </p>
         <p>
             <?= nl2br(htmlspecialchars($comment['comment'])) ?>

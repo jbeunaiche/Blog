@@ -24,5 +24,20 @@ class CommentManager
     $this->_db->exec('DELETE FROM comment WHERE id = '.$comment->id());
   }
     
+   public function getComment($id)
+	{
+		$req = $this->_db->prepare('SELECT * FROM comment WHERE id = :id');
+		$req->bindValue(':id', (int) $id);
+		$req->execute();
+		$req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Comment');
+		$post = $request->fetch();
+		$post->setCreatedcom(new DateTime($post->getCreatedcom()));
+		return $comment;
+	} 
     
+    public function signal($comment) {
+		$req = $this->_db->prepare('UPDATE comment SET status = 1  WHERE id = :id ');
+		$req->bindValue(':id', (int) $comment->id());
+		$req->execute();
+	}
   

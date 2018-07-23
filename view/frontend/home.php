@@ -69,7 +69,7 @@ while ($data = $posts->fetch())
                 <div class="card-body">
                     <h5 class="card-title"><?= htmlspecialchars($data['title']) ?></h5>
                     <p class="card-text"><?= nl2br(htmlspecialchars($data['content'])) ?></p>
-                    <p class="card-text"><small class="text-muted">Publié <em>le <?= htmlspecialchars($data['creation_date_fr']) ?></em></small></p>
+                    <p class="card-text"><small class="text-muted">Publié <em>le <?= htmlspecialchars($data['created']) ?></em></small></p>
                  <em><a href="index.php?action=post&amp;id=<?= htmlspecialchars($data['id']) ?>">Commentaires</a></em>   
                 </div>
             </div>
