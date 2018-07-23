@@ -3,12 +3,12 @@
 
 class Comment
 {
-  private $_id;
-  private $_postid;
-  private $_author;
-  private $_comment;
-  private $_createdCom;
-  private $_status;
+  private $id;
+  private $postid;
+  private $author;
+  private $comment;
+  private $createdCom;
+  private $status;
   
   public function __construct($value = [])
 	{
@@ -33,32 +33,32 @@ class Comment
     }
   }
 }
-    public function id() 
+    public function getId() 
   {
-      return $this->_id;
+      return $this->id;
   }
         
-  public function postid()
+  public function getPostid()
 {
-      return $this->_postid;
+      return $this->postid;
   }
         
-  public function author()
+  public function getAuthor()
   {
-      return $this->_author;
+      return $this->author;
   }
     
-  public function comment() 
+  public function getComment() 
   {
-      return $this->_comment;
+      return $this->comment;
   }
-    public function createdCom() 
+    public function getCreatedCom() 
   {
-      return $this->_createdCom;
+      return $this->createdCom;
   }
-    public function status() 
+    public function getStatus() 
   {
-      return $this->_status;
+      return $this->status;
   }
  
     
@@ -71,7 +71,7 @@ class Comment
     if ($id > 0)
     {
       
-      $this->_id = $id;
+      $this->id = $id;
     }
   }
     public function setPostid($id)
@@ -81,7 +81,7 @@ class Comment
     if ($id > 0)
     {
       
-      $this->_postid = $postid;
+      $this->postid = $postid;
     }
   }  
     
@@ -89,7 +89,7 @@ class Comment
   {
       if (is_string($author))
     {
-      $this->_author = $author;
+      $this->author = $author;
     }
   } 
 
@@ -97,13 +97,13 @@ class Comment
   {
       if (is_string($comment))
     {
-      $this->_comment = $comment;
+      $this->comment = $comment;
     }
   } 
     
   public function setCreatedCom($CreatedCom) 
   {
-      $this->_CreatedCom = $CreatedCom;
+      $this->CreatedCom = $CreatedCom;
   }
    
 		}

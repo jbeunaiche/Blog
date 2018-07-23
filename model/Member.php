@@ -74,7 +74,6 @@ class User
       $this->_pseudo = $pseudo;
     }
   } 
-
   public function setMail($mail) 
   {
       if (is_string($mail))

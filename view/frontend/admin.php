@@ -32,15 +32,15 @@ foreach($posts as $val)
                 <div class="post-preview">
 
                     <h2 class="post-title">
-                    Article : <?= htmlspecialchars($data['title']) ?>
+                    Article : <?= htmlspecialchars($val->getTitle()); ?>
                     </h2>
                    
 
 
 
-                    <em><a href="index.php?action=deletePost&amp;id=<?= htmlspecialchars($data['id'])?>">Effacer l'article - </a></em>
-                    <em><a href="index.php?action=edit&amp;id=<?= htmlspecialchars($data['id'])?>">Modifier l'article -</a> </em>
-                    <em><a href="index.php?action=editComment&amp;id=<?= htmlspecialchars($data['id']) ?>">Gérer les commentaires de l'article </a></em> <br>
+                    <em><a href="index.php?action=deletePost&amp;id=<?= htmlspecialchars($val->getId()); ?>">Effacer l'article - </a></em>
+                    <em><a href="index.php?action=edit&amp;id=<?= htmlspecialchars($val->getId()); ?>">Modifier l'article -</a> </em>
+                    <em><a href="index.php?action=editComment&amp;id=<?= htmlspecialchars($val->getId()); ?>">Gérer les commentaires de l'article </a></em> <br>
 
 
                 </div>
@@ -56,7 +56,7 @@ foreach($posts as $val)
 
     <?php
 }
-$posts->closeCursor();
+
 ?>
 
     <?php $content = ob_get_clean(); ?>

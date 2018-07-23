@@ -1,6 +1,5 @@
 <?php
 require_once ('Member.php');
-
 class MemberManager extends Manager
 {
  

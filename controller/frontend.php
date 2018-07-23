@@ -10,11 +10,28 @@ require_once ('model/MemberManager.php');
 
 require_once ('tools/Recaptcha.php');
 
+function addPost()
+	{
+	$newPost = new PostManager();
+	$affectedLines = $newPost->add(title, content);
+    
+    
+	if ($affectedLines === false)
+		{
+		throw new Exception('Impossible d\'ajouter l\'article!');
+		}
+	  else
+		{
+        $_SESSION['flash'] = 'Article ajouté';
+		header('Location: /project_4/index.php?action=admin');
+        exit();
+		}
+	}
 
 function listPosts()
 {
-	$postManager = new PostManager(); // Création d'un objet
-	$posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
+	$postManager = new PostManager(); 
+	$posts = $postManager->getPosts(); 
 	require ('view/frontend/home.php');
 
 }
@@ -129,3 +146,80 @@ function signalCom($postId)
         exit();
 	}
 }
+function admin()
+{
+    $postManager = new PostManager(); // Création d'un objet
+	$posts = $postManager->getPosts();
+    
+    require ('view/frontend/admin.php');
+    
+}
+
+
+function logout()
+{
+    unset($_SESSION['pseudo']);
+    $_SESSION['flash'] = 'Vous avez été déconnecté';
+    header ('Location: /project_4/index.php');
+    exit();
+}
+
+
+
+function added()
+	{
+	require ('view/frontend/postViewAdd.php');
+
+	}
+
+function deletePost()
+	{
+	$delPost = new PostManager();
+	$affectedLines = $delPost->deletePost();
+	if ($affectedLines === false)
+		{
+		throw new Exception('Impossible de supprimer');
+		}
+	  else
+		{
+		header('Location: /project_4/index.php?action=admin');
+		}
+	}
+
+
+
+function editView($postId) 
+{
+    $editManager = new PostManager();
+    $data = $editManager->getPost($postId);
+    
+    require('view/frontend/editView.php');
+}
+
+function editPost($id, $title, $content) 
+{
+    $editManager = new PostManager();
+    $affectedLines = $editManager->editPost($id, $title, $content);
+    if ($affectedLines === false)
+		{
+		throw new Exception('Erreur');
+		}
+	  else
+		{
+		header('Location: /project_4/index.php?action=admin');
+		}
+}
+
+function deleteComments()
+	{
+	$delCom = new CommentManager();
+	$affectedLines = $delCom->deleteComment();
+	if ($affectedLines === false)
+		{
+		throw new Exception('Impossible de supprimer');
+		}
+	  else
+		{
+		header("Location:".$_SERVER['HTTP_REFERER']."");
+		}
+	}
