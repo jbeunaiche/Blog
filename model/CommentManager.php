@@ -1,53 +1,39 @@
 <?php
-require_once ("model/Manager.php");
+require_once ('Comment.php');
 
-/**
- * This class is for add comments to posts
- * @author Julien
- * @version 0.1.1
- */
 class CommentManager extends Manager
-
+{
+  
+    
+    
+  public function add(Comment $comment) {
+		$req = $this->_db->prepare('INSERT INTO comment (id, postid, author, comment, createdCom) VALUES(:id, :postid, :author, :comment, NOW())');
+		$req->bindValue(':id', $comment->id(), PDO::PARAM_INT);
+		$req->bindValue(':postid', $comment->postid(), PDO::PARAM_INT);
+		$req->bindValue(':author', $comment->author(), PDO::PARAM_STR);
+		$req->bindValue(':comment', $comment->comment(), PDO::PARAM_STR);
+		$req->execute();
+	}
+    
+  public function delete(Comment $comment)
+  {
+    $this->_db->exec('DELETE FROM comment WHERE id = '.$comment->id());
+  }
+    
+   public function getComment($id)
 	{
-	public
-
-	function getComments($postId)
-		{
-		$db = $this->dbConnect();
-		$comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comment WHERE post_id = ? ORDER BY comment_date DESC');
-		$comments->execute(array(
-			$postId
-		));
-		return $comments;
-		}
-
-	public
-
-	function postComment($postId, $author, $comment)
-		{
-		$db = $this->dbConnect();
-		$comments = $db->prepare('INSERT INTO comment(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
-		$affectedLines = $comments->execute(array(
-			$postId,
-			$author,
-			$comment
-		));
-		return $affectedLines;
-		}
+		$req = $this->_db->prepare('SELECT * FROM comment WHERE id = :id');
+		$req->bindValue(':id', (int) $id);
+		$req->execute();
+		$req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Comment');
+		$post = $request->fetch();
+		$post->setCreatedcom(new DateTime($post->getCreatedcom()));
+		return $comment;
+	} 
     
-    public function deleteComment()
-    {
-        $db = $this->dbConnect();
-        $delCom = $db->prepare("DELETE FROM comment WHERE id= '" . $_GET['id'] . "'");
-        $delCom->execute(array());        
-    } 
-    
-	
-
-    public function signalComment($postId) {
-    $db = $this->dbConnect();
-    $comment = $db->prepare("UPDATE comment SET status='1' WHERE id=".$_GET['id']);
-    $affectedLines = $comment->execute(array($postId));
-    return $affectedLines;
-}
+    public function signal($comment) {
+		$req = $this->_db->prepare('UPDATE comment SET status = 1  WHERE id = :id ');
+		$req->bindValue(':id', (int) $comment->id());
+		$req->execute();
+	}
 }

@@ -1,68 +1,64 @@
 <?php
-require_once("model/Manager.php");
+require_once ('Post.php');
+require_once('Manager.php');
 
-/**
-* This class is for managing post
-* @author Julien 
-* @version 0.1.1
-*/
 class PostManager extends Manager
 {
-    public function getPosts()
-    {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(created, \'%d/%m/%Y à %Hh%imin%ss\') AS created_fr FROM post ORDER BY created DESC LIMIT 0, 5');
-
-        return $req;
-    }
-/**
-* This method if for geting post
-* @param postId
-* @return post
-*/
-    public function getPost($postId)
-    {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(created, \'%d/%m/%Y à %Hh%imin%ss\') AS created FROM post WHERE id = ?');
-        $req->execute(array($postId));
-        $post = $req->fetch();
-
-        return $post;
-    }
-/**
-* This method if for edit post
-* 
-* @return post
-*/    
+  
+  
+  public function add(Post $post)
+  {
+    $req = $this->_db->prepare('INSERT INTO post(title, content, created) VALUES(:title, :content, NOW())');
+    $req->bindValue(':title', $post->title(), PDO::PARAM_STR);
+    $req->bindValue(':content', $post->content(), PDO::PARAM_STR);
+    $req->execute();
+  } 
     
-    public function editPost($id, $title, $content) 
+   public function delete(Post $post)
+  {
+    $this->_db->exec('DELETE FROM post WHERE id = '.$post->id());
+  }
+    
+  public function edit(Post $post)
+  {
+    $req = $this->_db->prepare('UPDATE post SET title = :title, content = :content WHERE id = :id');
+    $req->bindValue(':title', $post->title(), PDO::PARAM_STR);
+    $req->bindValue(':content', $post->content(), PDO::PARAM_STR);
+    $req->bindValue(':id', $post->id(), PDO::PARAM_INT);
+    $req->execute();
+  }
+    
+  public function getPost($id)
+	{
+		$req = $this->_db->prepare('SELECT * FROM post WHERE id = :id');
+		$req->bindValue(':id', (int) $id);
+		$req->execute();
+		$req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Post');
+		$post = $request->fetch();
+		$post->setCreated(new DateTime($post->getCreated()));
+		return $post;
+	}
+  
+  public function getPosts($debut = -1, $limite = -1)
+  {
+    $sql = 'SELECT id, title, content, created FROM post ORDER BY created DESC LIMIT 0, 5';
+    
+    // On vérifie l'intégrité des paramètres fournis.
+    if ($debut != -1 || $limite != -1)
     {
-    $db = $this->dbConnect();
-    $req = $db->prepare('UPDATE post SET title = ?, content = ? WHERE id = ?');
-    $post = $req->execute(array($title, $content, $id));
-    return $post; 
+      $sql .= ' LIMIT '.(int) $limite.' OFFSET '.(int) $debut;
     }
-/**
-* This method if for add new post
-* 
-* @return post
-*/ 
-public function addPost($title, $content)
-    {
-        $db = $this->dbConnect();
-        $newPost = $db->prepare('INSERT INTO post(title, content, created) VALUES(?, ?, NOW())');
-        $affectedLines = $newPost->execute(array($title, $content));
-        return $affectedLines;
-    } 
-/**
-* This method if for delete post
-* 
-* @return post
-*/     
-    public function deletePost()
-    {
-        $db = $this->dbConnect();
-        $delPost = $db->prepare("DELETE FROM post WHERE id= '" . $_GET['id'] . "'");
-        $delPost->execute(array());        
-    }
+    
+    $req = $this->getDb()->query($sql);
+    $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Post');
+    
+    $listPosts = $req->fetchAll();
+
+    
+    
+    
+    $req->closeCursor();
+    
+    return $listPosts;
+  }
 }

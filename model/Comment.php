@@ -1,5 +1,7 @@
 <?php
-class Post
+
+
+class Comment
 {
   private $_id;
   private $_postid;
@@ -64,7 +66,7 @@ class Post
     
   public function setId($id)
       
-    $id = (int)$id;
+   
   {       
     if ($id > 0)
     {
@@ -74,7 +76,7 @@ class Post
   }
     public function setPostid($id)
       
-    $id = (int)$id;
+   
   {       
     if ($id > 0)
     {
@@ -99,7 +101,7 @@ class Post
     }
   } 
     
-  public function setCreatedCom(DateTime, $CreatedCom) 
+  public function setCreatedCom($CreatedCom) 
   {
       $this->_CreatedCom = $CreatedCom;
   }

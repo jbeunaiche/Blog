@@ -58,7 +58,7 @@ class User
     
   public function setId($id)
       
-    $id = (int)$id;
+    
   {       
     if ($id > 0)
     {

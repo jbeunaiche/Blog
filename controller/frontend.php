@@ -6,7 +6,7 @@ require_once ('model/PostManager.php');
 
 require_once ('model/CommentManager.php');
 
-require_once ('model/UserManager.php');
+require_once ('model/MemberManager.php');
 
 require_once ('tools/Recaptcha.php');
 
@@ -61,7 +61,7 @@ function registration()
 
 function addMember($pseudo, $mail, $password)
 {
-	$memberManager = new UserManager();
+	$memberManager = new MemberManager();
 	$affectedLines = $memberManager->newMember($pseudo, $mail, $password);
 	if ($affectedLines === false)
 	{
@@ -93,7 +93,7 @@ function loginMember($pseudo, $password)
 	}
 
 	
-		$logManager = new UserManager();
+		$logManager = new MemberManager();
 		$user = $logManager->getMember($pseudo);
 		if (password_verify($password, $user['password']))
 		{

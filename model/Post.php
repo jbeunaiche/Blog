@@ -1,10 +1,10 @@
 <?php
 class Post
 {
-  private $_id;
-  private $_title;
-  private $_content;
-  private $_created;
+  private $id;
+  private $title;
+  private $content;
+  private $created;
   
   public function __construct($value = [])
 	{
@@ -32,24 +32,24 @@ class Post
 
   // Getters  
     
-  public function id() 
+  public function getId() 
   {
-      return $this->_id;
+      return $this->id;
   }
         
-  public function title()
+  public function getTitle()
 {
-      return $this->_title;
+      return $this->title;
   }
         
-  public function content()
+  public function getContent()
   {
-      return $this->_content;
+      return $this->content;
   }
     
-  public function created() 
+  public function getCreated() 
   {
-      return $this->_created;
+      return $this->created;
   }
  
     
@@ -57,12 +57,12 @@ class Post
     
   public function setId($id)
       
-    $id = (int)$id;
+    
   {       
     if ($id > 0)
     {
       
-      $this->_id = $id;
+      $this->id = $id;
     }
   }  
     
@@ -70,7 +70,7 @@ class Post
   {
       if (is_string($title))
     {
-      $this->_title = $title;
+      $this->title = $title;
     }
   } 
 
@@ -78,13 +78,13 @@ class Post
   {
       if (is_string($content))
     {
-      $this->_content = $content;
+      $this->content = $content;
     }
   } 
     
-  public function setCreated(DateTime, $created) 
+  public function setCreated($created) 
   {
-      $this->_created = $created;
+      $this->created = $created;
   }
     
   

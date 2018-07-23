@@ -1,15 +1,9 @@
 <?php
-class UserMembmer
-{
-  private $_db; // Instance de PDO
+require_once ('Member.php');
 
-    
-  public function __construct($db)
-  {
-    $this->setDb($db);
-  }
-    
-    
+class MemberManager extends Manager
+{
+ 
     
   public function add(Member $member)
   {
@@ -20,12 +14,13 @@ class UserMembmer
     $req->execute();
   }
     
-   public function getMember($id)
+   public function getMember($pseudo)
 	{
-		$req = $this->_db->prepare('SELECT * FROM member WHERE id = :id');
-		$req->bindValue(':id', (int) $id);
+		$req = $this->_db->prepare('SELECT * FROM member WHERE pseudo = :pseudo');
+		$req->bindValue(':pseudo', $pseudo);
 		$req->execute();
 		$req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Member');
-		$member = $request->fetch();
+		$member = $req->fetch();
 		return $member;
 	}
+}

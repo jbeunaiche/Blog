@@ -22,7 +22,7 @@
 <?php endif; ?>
 
 <?php
-while ($data = $posts->fetch())
+foreach($posts as $val)
 {
 ?>
 
