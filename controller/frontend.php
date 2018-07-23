@@ -12,8 +12,8 @@ require_once ('tools/Recaptcha.php');
 
 function addPost()
 	{
-	$newPost = new PostManager();
-	$affectedLines = $newPost->add($Post);
+	$newPost = new PostManager($_POST);
+	$affectedLines = $newPost->add();
     
     
 	if ($affectedLines === false)
