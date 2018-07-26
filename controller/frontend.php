@@ -10,13 +10,32 @@ require_once ('model/MemberManager.php');
 
 require_once ('tools/Recaptcha.php');
 
+function deletePost()
+	{
+    
+	$post = new Post($_GET);
+    
+    $postmanager = new PostManager();
+    $postmanager-> delete($post);
+	if ($postmanager === false)
+		{
+		throw new Exception('Impossible de supprimer');
+		}
+	  else
+		{
+		header('Location: /project_4/index.php?action=admin');
+		}
+	}
+
+
+
 function addPost()
 	{
-	$newPost = new PostManager($_POST);
-	$affectedLines = $newPost->add();
+	$post = new Post($_POST);
+	$postmanager = new PostManager();
+    $postmanager-> add($post);
     
-    
-	if ($affectedLines === false)
+	if ($postmanager === false)
 		{
 		throw new Exception('Impossible d\'ajouter l\'article!');
 		}
@@ -38,11 +57,10 @@ function listPosts()
 
 function post()
 {
+    $post = new Post($_GET);
 	$postManager = new PostManager();
-	$commentManager = new CommentManager();
-	$post = $postManager->getPost($_GET['id']);
-	$comments = $commentManager->getComments($_GET['id']);
-	require ('view/frontend/postView.php');
+	$postManager->getPost($post);
+    require ('view/frontend/postView.php');
 
 }
 
@@ -171,22 +189,6 @@ function added()
 	require ('view/frontend/postViewAdd.php');
 
 	}
-
-function deletePost()
-	{
-	$delPost = new PostManager();
-	$affectedLines = $delPost->deletePost();
-	if ($affectedLines === false)
-		{
-		throw new Exception('Impossible de supprimer');
-		}
-	  else
-		{
-		header('Location: /project_4/index.php?action=admin');
-		}
-	}
-
-
 
 function editView($postId) 
 {

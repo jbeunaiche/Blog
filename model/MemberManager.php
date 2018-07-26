@@ -7,9 +7,9 @@ class MemberManager extends Manager
   public function add(Member $member)
   {
     $req = $this->_db->prepare('INSERT INTO member(pseudo, mail, password) VALUES(:pseudo, :mail, :password');
-    $req->bindValue(':pseudo', $member->pseudo(), PDO::PARAM_STR);
-    $req->bindValue(':mail', $member->mail(), PDO::PARAM_STR);
-    $req->bindValue(':password', $member->password(), PDO::PARAM_STR);
+    $req->bindValue(':pseudo', $member->getPseudo(), PDO::PARAM_STR);
+    $req->bindValue(':mail', $member->getMail(), PDO::PARAM_STR);
+    $req->bindValue(':password', $member->getPassword(), PDO::PARAM_STR);
     $req->execute();
   }
     
