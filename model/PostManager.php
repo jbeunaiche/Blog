@@ -34,11 +34,12 @@ class PostManager extends Manager
     $req->execute();
   }
     
-  public function getPost($id)
+  public function getPost($post)
 	{
       try{
 		$req = $this->_db->prepare('SELECT * FROM post WHERE id = :id');
-		$req->bindValue(':id', (int) $id);
+		$req->bindValue(':id', $post->getId(), PDO::PARAM_INT);
+        
 		$req->execute();
 		$req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, Post::class);
 		$post = $req->fetch();
