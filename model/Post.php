@@ -62,7 +62,7 @@ class Post
   {       
     if ($id > 0)
     {
-      echo $id;
+      
       $this->id = $id;
     }
   }  

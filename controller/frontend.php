@@ -49,17 +49,18 @@ function addPost()
 
 function listPosts()
 {
-	$postManager = new PostManager(); 
+	$postManager = new PostManager($_GET); 
 	$posts = $postManager->getPosts(); 
 	require ('view/frontend/home.php');
 
 }
 
+
 function post()
 {
-    $post = new Post($_GET);
+    var_dump($_GET);
 	$postManager = new PostManager();
-	$postManager->getPost($post);
+	$post =$postManager->getPost($_GET);
     require ('view/frontend/postView.php');
 
 }

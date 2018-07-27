@@ -36,14 +36,20 @@ class PostManager extends Manager
     
   public function getPost($id)
 	{
+      try{
 		$req = $this->_db->prepare('SELECT * FROM post WHERE id = :id');
 		$req->bindValue(':id', (int) $id);
 		$req->execute();
-		$req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Post');
+		$req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, Post::class);
 		$post = $req->fetch();
-		$post->setCreated(new DateTime($post->getCreated()));
+		// $post->setCreated(new DateTime($post->getCreated()));
 		return $post;
 	}
+      
+          catch (Exception $e) {
+    echo 'Attention : ' . $e->getMessage();
+}
+      }
   
   public function getPosts($debut = -1, $limite = -1)
   {
@@ -59,10 +65,6 @@ class PostManager extends Manager
     $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Post');
     
     $listPosts = $req->fetchAll();
-
-    
-    
-    
     $req->closeCursor();
     
     return $listPosts;

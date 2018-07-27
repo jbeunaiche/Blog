@@ -20,14 +20,14 @@ class CommentManager extends Manager
     $this->_db->exec('DELETE FROM comment WHERE id = '.$comment->getId());
   }
     
-   public function getComment($id)
+   public function getComments($postid)
 	{
-		$req = $this->_db->prepare('SELECT * FROM comment WHERE id = :id');
-		$req->bindValue(':id', (int) $id);
+		$req = $this->_db->prepare('SELECT * FROM comment WHERE id = '. $_GET['id']);
+		$req->bindValue(':postid', (int) $postid);
 		$req->execute();
 		$req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Comment');
-		$comment = $req->fetch();
-		return $comment;
+		$comments = $req->fetch();
+		return $comments;
 	} 
     
     public function signal($comment) {

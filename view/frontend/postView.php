@@ -3,13 +3,14 @@
 <?php ob_start(); ?>
 <div class="container">
 
-
+<?php var_dump($post);?>
     <div class="news">
         <h3>
-            <?= htmlspecialchars($post['title']) ?>
+            <?= htmlspecialchars($post['title']) 
+            ?>
                 <em>le <?= $post['created'] ?></em>
         </h3>
-
+<?php ($post['title']); ?>
         <p>
             <?= nl2br(htmlspecialchars($post['content'])) ?>
         </p>
@@ -31,15 +32,17 @@
         </div>
     </form>
 
+   
     <?php
-while ($comment = $comments->fetch())
+   
+foreach ($comments as $val)
 {
 ?>
-        <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le
-            <?= $comment['cretedCom'] ?>
+        <p><strong><?= htmlspecialchars($val->getAutor()) ?></strong> le
+            <?= ($val->getCreatedCom()) ?>
         </p>
         <p>
-            <?= nl2br(htmlspecialchars($comment['comment'])) ?>
+            <?= htmlspecialchars($val->getComment()) ?>
 
                 <em><a href="index.php?action=signalCom&amp;id=<?= htmlspecialchars($comment['id'])?>">Signaler le commentaire </a></em></p>
         <?php if(isset($_SESSION['flash'])) : ?>
