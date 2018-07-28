@@ -10,24 +10,25 @@ require_once ('model/MemberManager.php');
 
 require_once ('tools/Recaptcha.php');
 
-function deletePost()
-	{
-    
-	$post = new Post($_GET);
-    
-    $postmanager = new PostManager();
-    $postmanager-> delete($post);
-	if ($postmanager === false)
-		{
-		throw new Exception('Impossible de supprimer');
-		}
-	  else
-		{
-		header('Location: /project_4/index.php?action=admin');
-		}
-	}
 
+function listPosts()
+{
+	$postManager = new PostManager($_GET); 
+	$posts = $postManager->getPosts(); 
+	require ('view/frontend/home.php');
 
+}
+
+function post()
+{
+    
+	$postManager = new PostManager();
+	$post =$postManager->getPost($_GET['id']);
+    $commentManager = new CommentManager();
+    $comment = $commentManager-> getComments($_GET['id']);
+    require ('view/frontend/postView.php');
+
+}
 
 function addPost()
 	{
@@ -46,48 +47,70 @@ function addPost()
         exit();
 		}
 	}
-
-function listPosts()
-{
-	$postManager = new PostManager($_GET); 
-	$posts = $postManager->getPosts(); 
-	require ('view/frontend/home.php');
-
-}
-
-
-function post()
-{
-    var_dump($_GET);
-	$postManager = new PostManager();
-	$post =$postManager->getPost($_GET);
-    require ('view/frontend/postView.php');
-
-}
-
-function editComment()
-{
-	$postManager = new PostManager();
-	$commentManager = new CommentManager();
-	$post = $postManager->getPost($_GET['id']);
-	$comments = $commentManager->getComments($_GET['id']);
-	require ('view/frontend/commentView.php');
-
-}
-
-function addComment($postId, $author, $comment)
-{
-	$commentManager = new CommentManager();
-	$affectedLines = $commentManager->postComment($postId, $author, $comment);
-	if ($affectedLines === false)
+function added()
 	{
-		throw new Exception('Impossible d\'ajouter le commentaire !');
+	require ('view/frontend/postViewAdd.php');
+
 	}
-	else
+
+function deletePost()
 	{
-		header('Location: index.php?action=post&id=' . $postId);
+    
+	$post = new Post($_GET);
+    
+    $postmanager = new PostManager();
+    $postmanager-> delete($post);
+	if ($postmanager === false)
+		{
+		throw new Exception('Impossible de supprimer');
+		}
+	  else
+		{
+		header('Location: /project_4/index.php?action=admin');
+		}
 	}
+
+
+function editView($postId) 
+{
+    $postManager = new PostManager();
+	$post =$postManager->getPost($_GET['id']);
+    
+    require('view/frontend/editView.php');
 }
+
+function editPost() 
+{
+    
+    $post = new Post($_POST);
+	$postmanager = new PostManager();
+    $postmanager-> edit($post);
+    if ($postmanager === false)
+		{
+		throw new Exception('Erreur');
+		}
+	  else
+		{
+		header('Location: /project_4/index.php?action=admin');
+		}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function registration()
 {
@@ -146,24 +169,6 @@ function loginMember($pseudo, $password)
 function login()
 {
 	require ('view/frontend/connectionView.php');
-
-}
-
-function signalCom($postId)
-{
-	$signalCom = new CommentManager();
-	$affectedLines = $signalCom->signalComment($postId);
-	
-	if ($affectedLines === false)
-	{
-		throw new Exception('Erreur');
-	}
-	else
-	{
-        $_SESSION['flash'] = 'Commentaire signalé !';
-		header("Location:" . $_SERVER['HTTP_REFERER'] . "");
-        exit();
-	}
 }
 function admin()
 {
@@ -185,44 +190,7 @@ function logout()
 
 
 
-function added()
-	{
-	require ('view/frontend/postViewAdd.php');
 
-	}
 
-function editView($postId) 
-{
-    $editManager = new PostManager();
-    $data = $editManager->getPost($postId);
-    
-    require('view/frontend/editView.php');
-}
 
-function editPost($id, $title, $content) 
-{
-    $editManager = new PostManager();
-    $affectedLines = $editManager->editPost($id, $title, $content);
-    if ($affectedLines === false)
-		{
-		throw new Exception('Erreur');
-		}
-	  else
-		{
-		header('Location: /project_4/index.php?action=admin');
-		}
-}
 
-function deleteComments()
-	{
-	$delCom = new CommentManager();
-	$affectedLines = $delCom->deleteComment();
-	if ($affectedLines === false)
-		{
-		throw new Exception('Impossible de supprimer');
-		}
-	  else
-		{
-		header("Location:".$_SERVER['HTTP_REFERER']."");
-		}
-	}

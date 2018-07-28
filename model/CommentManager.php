@@ -4,6 +4,26 @@ require_once ('Comment.php');
 class CommentManager extends Manager
 {
   
+ 
+    
+public function getComments($postid) {
+		$req = $this->_db->prepare('SELECT * FROM comment WHERE postid = :postid ');
+		$req->bindValue(':postid', (int) $postid);
+		$req->execute();
+		$listsComments = $req->fetchAll(PDO::FETCH_CLASS, "Comment");
+		// On boucle pour obtenir les commentaires enfants et leur assigner une date de publication formatable (DateTime Object).
+		foreach($listsComments as $comment) {
+			
+			$comment->setCreatedCom(new DateTime($comment->getCreatedCom()));
+		}
+		$req->closeCursor();
+		return $listsComments;
+	}
+    
+    
+    
+    
+    
     
     
   public function add(Comment $comment) {
@@ -20,15 +40,7 @@ class CommentManager extends Manager
     $this->_db->exec('DELETE FROM comment WHERE id = '.$comment->getId());
   }
     
-   public function getComments($postid)
-	{
-		$req = $this->_db->prepare('SELECT * FROM comment WHERE id = '. $_GET['id']);
-		$req->bindValue(':postid', (int) $postid);
-		$req->execute();
-		$req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Comment');
-		$comments = $req->fetch();
-		return $comments;
-	} 
+    
     
     public function signal($comment) {
 		$req = $this->_db->prepare('UPDATE comment SET status = 1  WHERE id = :id ');

@@ -1,24 +1,24 @@
-<?php $title = htmlspecialchars($post['title']); ?>
+<?php $title = htmlspecialchars($post->getTitle()); ?>
 
 <?php ob_start(); ?>
 <div class="container">
 
-<?php var_dump($post);?>
+
     <div class="news">
         <h3>
-            <?= htmlspecialchars($post['title']) 
+            <?= htmlspecialchars($post->getTitle()) 
             ?>
-                <em>le <?= $post['created'] ?></em>
+                <em>le <?= $post->getCreated() ?></em>
         </h3>
-<?php ($post['title']); ?>
+
         <p>
-            <?= nl2br(htmlspecialchars($post['content'])) ?>
+            <?= htmlspecialchars($post->getContent()); ?>
         </p>
     </div>
 
     <h2>Commentaires</h2>
 
-    <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+    <form action="index.php?action=addComment&amp;id=<?= $post->getId() ?>" method="post">
         <div>
             <label for="author">Auteur</label><br />
             <input type="text" id="author" name="author" />
@@ -34,15 +34,16 @@
 
    
     <?php
-   
-foreach ($comments as $val)
+ var_dump ($comment);  
+foreach ($comment as $val)
+    
 {
 ?>
-        <p><strong><?= htmlspecialchars($val->getAutor()) ?></strong> le
-            <?= ($val->getCreatedCom()) ?>
+        <p><strong><?= htmlspecialchars($val->getAutor()); ?></strong> le
+            <?= ($val->getCreatedCom()); ?>
         </p>
         <p>
-            <?= htmlspecialchars($val->getComment()) ?>
+            <?= htmlspecialchars($val->getComment()); ?>
 
                 <em><a href="index.php?action=signalCom&amp;id=<?= htmlspecialchars($comment['id'])?>">Signaler le commentaire </a></em></p>
         <?php if(isset($_SESSION['flash'])) : ?>

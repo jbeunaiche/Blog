@@ -2,6 +2,7 @@
 session_start();
 
 require('controller/frontend.php');
+require('controller/ccc.php');
 
 
 try {
