@@ -7,7 +7,7 @@ class CommentManager extends Manager
  
     
 public function getComments($postid) {
-		$req = $this->_db->prepare('SELECT * FROM comment WHERE postid = :postid ');
+		$req = $this->_db->prepare('SELECT id, postid, author, comment, createdCom FROM comment WHERE postid = :postid ');
 		$req->bindValue(':postid', (int) $postid);
 		$req->execute();
 		$listsComments = $req->fetchAll(PDO::FETCH_CLASS, "Comment");
