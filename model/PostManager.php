@@ -1,3 +1,5 @@
+	
+
 <?php
 require_once ('Post.php');
 
@@ -6,7 +8,6 @@ require_once ('Manager.php');
 class PostManager extends Manager
 
 {
-    
  public function add(Post $post)
 
  {
@@ -15,13 +16,11 @@ class PostManager extends Manager
   $req->bindValue(':content', $post->getContent() , PDO::PARAM_STR);
   $req->execute();
  }
-    
  public function delete(Post $post)
 
  {
   $this->_db->exec('DELETE FROM post WHERE id = ' . $_GET['id']);
  }
-    
  public function edit(Post $post)
 
  {
@@ -31,7 +30,6 @@ class PostManager extends Manager
   $req->bindValue(':id', $post->getId() , PDO::PARAM_INT);
   $req->execute();
  }
-    
  public function getPost($id)
 
  {
@@ -41,10 +39,9 @@ class PostManager extends Manager
   $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Post::class);
 
   $post = $req->fetch();
-  //$post->setCreated(new DateTime($post->getCreated()));
+  // $post->setCreated(new DateTime($post->getCreated()));
   return $post;
  }
-    
  public function getPosts($debut = - 1, $limite = - 1)
 
  {

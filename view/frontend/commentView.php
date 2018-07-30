@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 <div class="container">
-    <h2>Liste des commentaires de l'article : <?= htmlspecialchars($post['title']) ?></h2>
+    <h2>Liste des commentaires de l'article : <?= htmlspecialchars($post->getTitle()) ?></h2>
 
 
 
@@ -20,21 +20,21 @@
         <tbody>
             <tr>
                 <?php
-        while ($comment = $comments->fetch()) {
+        foreach ($comment as $val) {
             ?>
 
 
                     <td>
-                        <?php echo htmlspecialchars($comment['author']); ?>
+                        <?php echo htmlspecialchars($val->getAuthor()); ?>
                     </td>
                     <td>
-                        <?php echo htmlspecialchars($comment['comment']); ?>
+                        <?php echo htmlspecialchars($val->getComment());; ?>
                     </td>
                     <td>
-                        <?php echo htmlspecialchars($comment['comment_date_fr']); ?>
+                        <?php echo htmlspecialchars($val->getCreatedCom()); ?>
                     </td>
 
-                    <td><a href="index.php?action=deleteCom&amp;id=<?= $comment['id']?>">Effacer le commentaire </a></td>
+                    <td><a href="index.php?action=deleteCom&amp;id=<?= ($val->getId())?>">Effacer le commentaire </a></td>
             </tr>
 
             <?php

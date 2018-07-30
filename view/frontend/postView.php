@@ -31,26 +31,26 @@
             <input type="submit" />
         </div>
     </form>
-
+<?php if(isset($_SESSION['flash'])) : ?>
+        <div class="alert alert-primary" role="alert">
+            <?= $_SESSION['flash']; ?>
+        </div>
+        <?php endif; ?>
    
     <?php
- var_dump ($comment);  
+  
 foreach ($comment as $val)
     
 {
 ?>
-        <p><strong><?= htmlspecialchars($val->getAutor()); ?></strong> le
+        <p><strong><?= htmlspecialchars($val->getAuthor()); ?></strong> le
             <?= ($val->getCreatedCom()); ?>
         </p>
         <p>
             <?= htmlspecialchars($val->getComment()); ?>
 
-                <em><a href="index.php?action=signalCom&amp;id=<?= htmlspecialchars($comment['id'])?>">Signaler le commentaire </a></em></p>
-        <?php if(isset($_SESSION['flash'])) : ?>
-        <div class="alert alert-primary" role="alert">
-            <?= $_SESSION['flash']; ?>
-        </div>
-        <?php endif; ?>
+                <em><a href="index.php?action=signalCom&amp;id=<?= htmlspecialchars($val->getId())?>">Signaler le commentaire </a></em></p>
+        
 
         <?php
 }

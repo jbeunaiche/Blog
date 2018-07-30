@@ -11,6 +11,7 @@
     <li><a href="index.php?action=addPost">Ajouter un article</a></li>
     <li><a href="index.php?action=logout">Déconnexion</a></li>
     <li><a href="index.php">Acueil du site</a></li>
+      <li><a href="index.php?action=signaledComments">Commentaires signalés</a></li>
   </ul>
   
 </nav>
