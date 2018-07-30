@@ -1,5 +1,3 @@
-	
-
 <?php
 require_once ('Post.php');
 
@@ -8,6 +6,10 @@ require_once ('Manager.php');
 class PostManager extends Manager
 
 {
+    /**
+	 * Add Post
+	 * 
+	 */
  public function add(Post $post)
 
  {
@@ -16,11 +18,19 @@ class PostManager extends Manager
   $req->bindValue(':content', $post->getContent() , PDO::PARAM_STR);
   $req->execute();
  }
+    /**
+	 * Delete Post
+	 * 
+	 */
  public function delete(Post $post)
 
  {
   $this->_db->exec('DELETE FROM post WHERE id = ' . $_GET['id']);
  }
+    /**
+	 * Update Post
+	 * 
+	 */
  public function edit(Post $post)
 
  {
@@ -30,6 +40,10 @@ class PostManager extends Manager
   $req->bindValue(':id', $post->getId() , PDO::PARAM_INT);
   $req->execute();
  }
+    /**
+	 * Get single post
+	 * 
+	 */
  public function getPost($id)
 
  {
@@ -39,14 +53,18 @@ class PostManager extends Manager
   $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Post::class);
 
   $post = $req->fetch();
-  // $post->setCreated(new DateTime($post->getCreated()));
+  $post->setCreated(new DateTime($post->getCreated()));
   return $post;
  }
+    /**
+	 * Get lists posts
+	 * 
+	 */
  public function getPosts($debut = - 1, $limite = - 1)
 
  {
   $req = 'SELECT id, title, content, created FROM post ORDER BY created DESC LIMIT 0, 5';
-  // On vérifie l'intégrité des paramètres fournis.
+  
   if ($debut != - 1 || $limite != - 1)
   {
    $req.= ' LIMIT ' . (int)$limite . ' OFFSET ' . (int)$debut;

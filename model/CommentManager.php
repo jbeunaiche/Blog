@@ -4,6 +4,10 @@ require_once ('Comment.php');
 class CommentManager extends Manager
 
 {
+    /**
+	 * Get comments from specific post
+	 * 
+	 */
  public function getComments($postid)
 
  {
@@ -18,14 +22,22 @@ class CommentManager extends Manager
   $req->closeCursor();
   return $listsComments;
  }
- public function add(Comment $comment)
+    /**
+	 * Add comment from post
+	 * 
+	 */
+ public function addComment(Comment $comment)
 
  {
-  $req = $this->_db->prepare('INSERT INTO comment (id, postid, author, comment, createdCom) VALUES(:id, :postid, :author, :comment, NOW())');
+  $req = $this->_db->prepare('INSERT INTO comment (author, comment, createdCom) VALUES(:author, :comment, NOW())');
   $req->bindValue(':author', $comment->getAuthor() , PDO::PARAM_STR);
   $req->bindValue(':comment', $comment->getComment() , PDO::PARAM_STR);
   $req->execute();
  }
+    /**
+	 * Delete comment
+	 * 
+	 */
  public function delete(Comment $comment)
 
  {
@@ -38,6 +50,10 @@ class CommentManager extends Manager
   $req->bindValue(':id', (int)$comment->getId());
   $req->execute();
  }
+    /**
+	 * Get list signaled comments
+	 * 
+	 */
 
  public function getSignaled()
  {

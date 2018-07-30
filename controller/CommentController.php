@@ -5,9 +5,9 @@ require_once ('tools/Recaptcha.php');
 
 function addComment()
 {
- $comment = new Comment($_GET);
+ $comment = new Comment($_POST);
  $commentmanager = new CommentManager();
- $commentmanager->add($comment);
+ $commentmanager->addComment($comment);
  if ($commentmanager === false)
  {
   throw new Exception('Impossible d\'ajouter l\'article!');
