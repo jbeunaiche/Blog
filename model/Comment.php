@@ -3,7 +3,7 @@ class Comment
 
 {
  private $id;
- private $postid;
+ private $postId;
  private $author;
  private $comment;
  private $createdCom;
@@ -36,10 +36,10 @@ class Comment
  {
   return $this->id;
  }
- public function getPostid()
+ public function getPostId()
 
  {
-  return $this->postid;
+  return $this->postId;
  }
  public function getAuthor()
 
@@ -76,7 +76,7 @@ class Comment
  {
   if ($id > 0)
   {
-   $this->postid = $postid;
+   $this->postId = $id;
   }
  }
  public function setAuthor($author)

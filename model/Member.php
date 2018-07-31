@@ -2,10 +2,10 @@
 class User
 
 {
- private $_id;
- private $_pseudo;
- private $_mail;
- private $_password;
+ private $id;
+ private $pseudo;
+ private $mail;
+ private $password;
  public function __construct($value = [])
 
  {
@@ -33,22 +33,22 @@ class User
  public function id()
 
  {
-  return $this->_id;
+  return $this->id;
  }
  public function pseudo()
 
  {
-  return $this->_pseudo;
+  return $this->pseudo;
  }
  public function mail()
 
  {
-  return $this->_mail;
+  return $this->mail;
  }
  public function password()
 
  {
-  return $this->_password;
+  return $this->password;
  }
  // Setters
  public function setId($id)
@@ -56,7 +56,7 @@ class User
  {
   if ($id > 0)
   {
-   $this->_id = $id;
+   $this->id = $id;
   }
  }
  public function setPseudo($pseudo)
@@ -64,7 +64,7 @@ class User
  {
   if (is_string($pseudo))
   {
-   $this->_pseudo = $pseudo;
+   $this->pseudo = $pseudo;
   }
  }
  public function setMail($mail)
@@ -72,12 +72,12 @@ class User
  {
   if (is_string($mail))
   {
-   $this->_mail = $mail;
+   $this->mail = $mail;
   }
  }
  public function setPassword($password)
 
  {
-  $this->_password = $password;
+  $this->password = $password;
  }
 }

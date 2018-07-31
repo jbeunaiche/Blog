@@ -1,6 +1,5 @@
-
-
 <?php ob_start(); ?>
+<?php $allowed = "<div><p><span><br><ul><li><strong><em>"; ?>
 <div class="container">
 
 
@@ -24,12 +23,12 @@ foreach ($signaled as $val)
             <?= htmlspecialchars($val->getComment()); ?>
 
                 
-        
+        <a href="index.php?action=deleteCom&amp;id=<?= ($val->getId())?>">Effacer le commentaire </a>
 
         <?php
 }
 ?>
-        <p><a href="index.php">Retour à l'Accueil</a></p>
+        <p><a href="index.php?action=admin">Retour à l'administration</a></p>
 </div>
 <?php $content = ob_get_clean(); ?>
 

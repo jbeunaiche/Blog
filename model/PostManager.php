@@ -53,7 +53,7 @@ class PostManager extends Manager
   $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Post::class);
 
   $post = $req->fetch();
-  $post->setCreated(new DateTime($post->getCreated()));
+  //$post->setCreated(new DateTime($post->getCreated()));
   return $post;
  }
     /**

@@ -1,7 +1,7 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-
+<?php $allowed = "<div><p><span><br><ul><li><strong><em>"; ?>
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -66,8 +66,8 @@ foreach ($posts as $val)
             <div class="card mb-3">
                 <img class="card-img-top" src='public/images/alaska.jpg' alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title"><?= htmlspecialchars($val->getTitle()); ?></h5>
-                    <p class="card-text"><?= htmlspecialchars($val->getContent()); ?></p>
+                    <h5 class="card-title"><?= strip_tags($val->getTitle(),$allowed); ?></h5>
+                    <p class="card-text"><?= strip_tags($val->getContent(),$allowed); ?></p>
                     <p class="card-text"><small class="text-muted">Publié <em>le <?= $val->getCreated(); ?></em></small></p>
                  <em><a href="index.php?action=post&amp;id=<?= htmlspecialchars($val->getId()); ?>">Commentaires</a></em>   
                 </div>

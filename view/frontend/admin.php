@@ -1,17 +1,17 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-
-
+<?php $allowed = "<div><p><span><br><ul><li><strong><em>"; ?>
 
 
 
 <nav class="navbar navbar-inverse">
   <ul class="nav navbar-nav">
+    <li><a href="index.php">Acueil du site</a></li><br><br>
     <li><a href="index.php?action=addPost">Ajouter un article</a></li>
     <li><a href="index.php?action=logout">Déconnexion</a></li>
-    <li><a href="index.php">Acueil du site</a></li>
-      <li><a href="index.php?action=signaledComments">Commentaires signalés</a></li>
+    
+    <li><a href="index.php?action=signaledComments">Commentaires signalés</a></li>
   </ul>
   
 </nav>
@@ -23,6 +23,7 @@
 <?php endif; ?>
 
 <?php
+
 foreach($posts as $val)
 {
 ?>

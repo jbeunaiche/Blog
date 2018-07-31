@@ -1,6 +1,8 @@
 <?php $title = htmlspecialchars($post->getTitle()); ?>
 
 <?php ob_start(); ?>
+<?php $allowed = "<div><p><span><br><ul><li><strong><em>"; ?>
+
 <div class="container">
 
 
@@ -18,7 +20,7 @@
 
     <h2>Commentaires</h2>
 
-    <form action="index.php?action=addComment&amp;id=<?= $post->getId() ?>" method="post">
+    <form action="index.php?action=addComment" method="post">
         <div>
             <label for="author">Auteur</label><br />
             <input type="text" id="author" name="author" />
@@ -28,6 +30,7 @@
             <textarea id="comment" name="comment"></textarea>
         </div>
         <div>
+            <input type="hidden" name="postId" value="<?=$post->getId();?>"/>
             <input type="submit" />
         </div>
     </form>
@@ -38,16 +41,16 @@
         <?php endif; ?>
    
     <?php
-  
+ 
 foreach ($comment as $val)
     
 {
 ?>
-        <p><strong><?= htmlspecialchars($val->getAuthor()); ?></strong> le
+        <p><strong><?= strip_tags($val->getAuthor(), $allowed); ?></strong> le
             <?= ($val->getCreatedCom()); ?>
         </p>
         <p>
-            <?= htmlspecialchars($val->getComment()); ?>
+            <?= strip_tags($val->getComment(), $allowed); ?>
 
                 <em><a href="index.php?action=signalCom&amp;id=<?= htmlspecialchars($val->getId())?>">Signaler le commentaire </a></em></p>
         

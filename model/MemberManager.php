@@ -4,6 +4,10 @@ require_once ('Member.php');
 class MemberManager extends Manager
 
 {
+    /**
+	 * Add Member to database
+	 * @param member 
+	 */
  public function add(Member $member)
 
  {
@@ -13,6 +17,10 @@ class MemberManager extends Manager
   $req->bindValue(':password', $member->getPassword() , PDO::PARAM_STR);
   $req->execute();
  }
+    /**
+	 * Select Member 
+	 * 
+	 */
  public function getMember($pseudo)
 
  {

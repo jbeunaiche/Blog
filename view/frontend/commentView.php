@@ -1,7 +1,7 @@
 <?php $title = "Gestion des commentaires"; ?>
 
 <?php ob_start(); ?>
-
+<?php $allowed = "<div><p><span><br><ul><li><strong><em>"; ?>
 <div class="container">
     <h2>Liste des commentaires de l'article : <?= htmlspecialchars($post->getTitle()) ?></h2>
 

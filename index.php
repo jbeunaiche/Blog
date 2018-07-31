@@ -3,22 +3,25 @@
 <?php
 session_start();
 require ('controller/PostController.php');
-
+require ('controller/MemberController.php');
 require ('controller/CommentController.php');
 
+$commentController = new CommentController();
+$postController = new PostController();
+$memberController = new MemberController();
 try
 {
  if (isset($_GET['action']))
  {
   if ($_GET['action'] == 'listPosts')
   {
-   listPosts();
+   $postController->listPosts();
   }
   elseif ($_GET['action'] == 'post')
   {
    if (isset($_GET['id']) && $_GET['id'] > 0)
    {
-    post();
+    $postController->post();
    }
    else
    {
@@ -29,7 +32,7 @@ try
   {
    if (isset($_SESSION['pseudo']))
    {
-    signaledComments();
+    $commentController->signaledComments();
    }
    else
    {
@@ -38,11 +41,11 @@ try
   }
   elseif ($_GET['action'] == 'addComment')
   {
-   if (isset($_GET['id']) > 0)
+   if (isset($_POST['postId']) > 0)
    {
     if (!empty($_POST['author']) && !empty($_POST['comment']))
     {
-     addComment($_POST['author'], $_POST['comment']);
+     $commentController->addComment($_POST);
     }
     else
     {
@@ -60,7 +63,7 @@ try
    {
     if (!empty($_POST['pseudo']) && !empty($_POST['mail']) && !empty($_POST['password']))
     {
-     addMember($_POST['pseudo'], $_POST['mail'], $_POST['password']);
+     $memberController->->addMember($_POST['pseudo'], $_POST['mail'], $_POST['password']);
     }
     else
     {
@@ -69,7 +72,7 @@ try
    }
    else
    {
-    registration();
+    $memberController->>registration();
    }
   }
   elseif ($_GET['action'] == 'loginMember')
@@ -78,7 +81,7 @@ try
    {
     if (!empty($_POST['pseudo']) && !empty($_POST['password']))
     {
-     loginMember($_POST['pseudo'], $_POST['password']);
+     $memberController->loginMember($_POST['pseudo'], $_POST['password']);
     }
     else
     {
@@ -87,7 +90,7 @@ try
    }
    else
    {
-    login();
+    $memberController->login();
    }
   }
   elseif ($_GET['action'] == 'addPost')
@@ -98,7 +101,7 @@ try
     {
      if (!empty($_POST['title']) && !empty($_POST['content']))
      {
-      addPost($_POST['title'], $_POST['content']);
+      $postController->addPost($_POST['title'], $_POST['content']);
      }
      else
      {
@@ -107,7 +110,7 @@ try
     }
     else
     {
-     added();
+     $postController->added();
     }
    }
    else
@@ -120,7 +123,7 @@ try
   {
    if (isset($_SESSION['pseudo']))
    {
-    admin();
+    $postController->admin();
    }
    else
    {
@@ -131,7 +134,7 @@ try
   {
    if (isset($_SESSION['pseudo']))
    {
-    deletePost();
+    $postController->deletePost();
    }
    else
    {
@@ -142,7 +145,7 @@ try
   {
    if (isset($_SESSION['pseudo']))
    {
-    deleteComment();
+    $commentController->deleteComment();
    }
    else
    {
@@ -151,13 +154,13 @@ try
   }
   elseif ($_GET['action'] == 'logout')
   {
-   logout();
+   $postController->logout();
   }
   elseif ($_GET['action'] == 'edit')
   {
    if (isset($_GET['id']) && $_GET['id'] > 0)
    {
-    editView($_GET['id']);
+    $postController->editView($_GET['id']);
    }
    else
    {
@@ -170,7 +173,7 @@ try
    {
     if (!empty($_POST['title']) && !empty($_POST['content']))
     {
-     editPost($_POST['id'], $_POST['title'], $_POST['content']);
+     $postController->editPost($_POST['id'], $_POST['title'], $_POST['content']);
     }
     else
     {
@@ -186,7 +189,7 @@ try
   {
    if (isset($_GET['id']) && $_GET['id'] > 0)
    {
-    editComment();
+    $commentController->editComment();
    }
    else
    {
@@ -197,7 +200,7 @@ try
   {
    if (isset($_GET['id']) && $_GET['id'] > 0)
    {
-    signalCom($_GET['id']);
+    $commentController->signalCom($_GET['id']);
    }
    else
    {
@@ -207,7 +210,7 @@ try
  }
  else
  {
-  listPosts();
+  $postController->listPosts();
  }
 }
 catch(Exception $e)

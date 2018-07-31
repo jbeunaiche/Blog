@@ -8,6 +8,8 @@ class Post
  private $title;
  private $content;
  private $created;
+ private $memberid;
+  
  public function __construct($value = [])
 
  {
