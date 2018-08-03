@@ -16,11 +16,11 @@ foreach ($signaled as $val)
     
 {
 ?>
-        <p><strong><?= htmlspecialchars($val->getAuthor()); ?></strong> le
+        <p><strong><?= strip_tags($val->getAuthor(), $allowed); ?></strong> le
             <?= ($val->getCreatedCom()); ?>
         </p>
         <p>
-            <?= htmlspecialchars($val->getComment()); ?>
+            <?= strip_tags($val->getComment(), $allowed); ?>
 
                 
         <a href="index.php?action=deleteCom&amp;id=<?= ($val->getId())?>">Effacer le commentaire </a>

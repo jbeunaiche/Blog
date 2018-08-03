@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 <?php $allowed = "<div><p><span><br><ul><li><strong><em>"; ?>
 <div class="container">
-    <h2>Liste des commentaires de l'article : <?= htmlspecialchars($post->getTitle()) ?></h2>
+    <h2>Liste des commentaires de l'article : <?= strip_tags($post->getTitle(), $allowed) ?></h2>
 
 
 
@@ -25,10 +25,10 @@
 
 
                     <td>
-                        <?php echo htmlspecialchars($val->getAuthor()); ?>
+                        <?php echo strip_tags($val->getAuthor(), $allowed); ?>
                     </td>
                     <td>
-                        <?php echo htmlspecialchars($val->getComment());; ?>
+                        <?php echo strip_tags($val->getComment(), $allowed);; ?>
                     </td>
                     <td>
                         <?php echo htmlspecialchars($val->getCreatedCom()); ?>

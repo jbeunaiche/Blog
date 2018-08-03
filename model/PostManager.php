@@ -13,8 +13,9 @@ class PostManager extends Manager
  public function add(Post $post)
 
  {
-  $req = $this->_db->prepare('INSERT INTO post(title, content, created) VALUES(:title, :content, NOW())');
+  $req = $this->_db->prepare('INSERT INTO post(title, resume, content, created) VALUES(:title, :resume, :content, NOW())');
   $req->bindValue(':title', $post->getTitle() , PDO::PARAM_STR);
+  $req->bindValue(':resume', $post->getResume() , PDO::PARAM_STR);
   $req->bindValue(':content', $post->getContent() , PDO::PARAM_STR);
   $req->execute();
  }
@@ -34,8 +35,9 @@ class PostManager extends Manager
  public function edit(Post $post)
 
  {
-  $req = $this->_db->prepare('UPDATE post SET title = :title, content = :content WHERE id = :id');
+  $req = $this->_db->prepare('UPDATE post SET title = :title, resume = :resume, content = :content WHERE id = :id');
   $req->bindValue(':title', $post->getTitle() , PDO::PARAM_STR);
+  $req->bindValue(':resume', $post->getResume() , PDO::PARAM_STR);   
   $req->bindValue(':content', $post->getContent() , PDO::PARAM_STR);
   $req->bindValue(':id', $post->getId() , PDO::PARAM_INT);
   $req->execute();
@@ -63,7 +65,7 @@ class PostManager extends Manager
  public function getPosts($debut = - 1, $limite = - 1)
 
  {
-  $req = 'SELECT id, title, content, created FROM post ORDER BY created DESC LIMIT 0, 5';
+  $req = 'SELECT id, title, resume, content, created FROM post ORDER BY created DESC ';
   
   if ($debut != - 1 || $limite != - 1)
   {

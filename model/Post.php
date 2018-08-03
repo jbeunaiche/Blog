@@ -6,6 +6,7 @@ class Post
 {
  private $id;
  private $title;
+ private $resume;
  private $content;
  private $created;
  private $memberid;
@@ -42,7 +43,12 @@ class Post
  public function getTitle()
 
  {
-  return $this->title;
+     return $this->title;
+ }
+ public function getResume()
+
+ {
+  return $this->resume;
  }
  public function getContent()
 
@@ -69,6 +75,14 @@ class Post
   if (is_string($title))
   {
    $this->title = $title;
+  }
+ }
+     public function setResume($resume)
+
+ {
+  if (is_string($resume))
+  {
+   $this->resume = $resume;
   }
  }
  public function setContent($content)

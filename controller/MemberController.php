@@ -56,4 +56,9 @@ public function loginMember($pseudo, $password)
   echo 'Le mot de passe est invalide.';
  }
 }
+    public function login()
+{
+ require ('view/frontend/connectionView.php');
+
+}
 }

@@ -63,7 +63,7 @@ try
    {
     if (!empty($_POST['pseudo']) && !empty($_POST['mail']) && !empty($_POST['password']))
     {
-     $memberController->->addMember($_POST['pseudo'], $_POST['mail'], $_POST['password']);
+     $memberController->addMember($_POST['pseudo'], $_POST['mail'], $_POST['password']);
     }
     else
     {
@@ -72,7 +72,7 @@ try
    }
    else
    {
-    $memberController->>registration();
+    $memberController->registration();
    }
   }
   elseif ($_GET['action'] == 'loginMember')
@@ -99,9 +99,9 @@ try
    {
     if (isset($_GET['id']) > 0)
     {
-     if (!empty($_POST['title']) && !empty($_POST['content']))
+     if (!empty($_POST['title']) && !empty($_POST['resume']) && !empty($_POST['content']))
      {
-      $postController->addPost($_POST['title'], $_POST['content']);
+      $postController->addPost($_POST['title'], $_POST['resume'], $_POST['content']);
      }
      else
      {
@@ -154,7 +154,7 @@ try
   }
   elseif ($_GET['action'] == 'logout')
   {
-   $postController->logout();
+   $memberController->logout();
   }
   elseif ($_GET['action'] == 'edit')
   {
@@ -171,9 +171,9 @@ try
   {
    if (isset($_POST['id']) && $_POST['id'] > 0)
    {
-    if (!empty($_POST['title']) && !empty($_POST['content']))
+    if (!empty($_POST['title'])&& !empty($_POST['resume']) && !empty($_POST['content']))
     {
-     $postController->editPost($_POST['id'], $_POST['title'], $_POST['content']);
+     $postController->editPost($_POST['id'], $_POST['resume'], $_POST['title'], $_POST['content']);
     }
     else
     {

@@ -53,7 +53,7 @@ private $remoteip;
         }
         
         else {
-            throw new \Exception("You are a bot, aren't you !! ".$decode['success']);
+            throw new \Exception("Vous n'avez pas coché le Recaptcha ".$decode['success']);
         }
     }
     

@@ -1,7 +1,6 @@
 <?php $title = "Connexion"; ?>
 
 <?php ob_start(); ?>
-<?php $allowed = "<div><p><span><br><ul><li><strong><em>"; ?>
 <div class="container">
 
 <h1>Connexion</h1>

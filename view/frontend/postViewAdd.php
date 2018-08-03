@@ -1,15 +1,19 @@
 <?php $title = "Ajout d'article"; ?>
 <?php ob_start(); ?>
-<?php $allowed = "<div><p><span><br><ul><li><strong><em>"; ?>
+
 
 <div class="container">
 
-<h2>Ajout d'un article</h2>
+<h2>Création d'un nouvel article</h2>
 
 <form action="index.php?action=addPost&amp;id=" method="post">
     <div>
         <label for="title">Titre</label><br />
-        <input type="text" id="title" name="title" />
+        <input type="text" id="title" name="title" >
+    </div>
+    <div>
+        <label for="chapiter">Résumé</label><br />
+        <textarea type="text" id="resume" name="resume" ></textarea>
     </div>
     <div>
         <label for="content">Texte de l'article</label><br />

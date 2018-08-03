@@ -85,11 +85,7 @@ public function editPost()
  }
 }
 
-public function login()
-{
- require ('view/frontend/connectionView.php');
 
-}
 public function admin()
 {
  $postManager = new PostManager(); // Création d'un objet
