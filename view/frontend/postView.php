@@ -45,7 +45,11 @@
         </div>
       </div>
     </header>
-
+<?php if(isset($_SESSION['flash'])) : ?>
+        <div class="alert alert-danger" role="alert">
+        <?= $_SESSION['flash']; ?>
+        </div>
+        <?php endif; ?>
     <!-- Post Content -->
     <article>
       <div class="container">
@@ -91,6 +95,7 @@ foreach ($comment as $val)
               <h5 class="mt-0"><?= strip_tags($val->getAuthor(), $allowed); ?> le
             <?= ($val->getCreatedCom()); ?></h5>
               <?= strip_tags($val->getComment(), $allowed); ?> <a href="index.php?action=signalCom&amp;id=<?= htmlspecialchars($val->getId())?>">(Signaler le commentaire)</a>
+        
             </div>
           </div>
         <hr>

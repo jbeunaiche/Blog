@@ -13,7 +13,7 @@ class PostManager extends Manager
  public function add(Post $post)
 
  {
-  $req = $this->_db->prepare('INSERT INTO post(title, resume, content, created) VALUES(:title, :resume, :content, NOW())');
+  $req = $this->_db->prepare('INSERT INTO post(title, resume, content, DATE_FORMAT(created, \'%d/%m/%Y\') AS created) VALUES(:title, :resume, :content, NOW())');
   $req->bindValue(':title', $post->getTitle() , PDO::PARAM_STR);
   $req->bindValue(':resume', $post->getResume() , PDO::PARAM_STR);
   $req->bindValue(':content', $post->getContent() , PDO::PARAM_STR);
@@ -55,7 +55,7 @@ class PostManager extends Manager
   $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Post::class);
 
   $post = $req->fetch();
-  //$post->setCreated(new DateTime($post->getCreated()));
+  
   return $post;
  }
     /**
@@ -65,7 +65,7 @@ class PostManager extends Manager
  public function getPosts($debut = - 1, $limite = - 1)
 
  {
-  $req = 'SELECT id, title, resume, content, created FROM post ORDER BY created DESC ';
+  $req = 'SELECT id, title, resume, content, DATE_FORMAT(created, \'%d/%m/%Y\') AS created FROM post ORDER BY created DESC ';
   
   if ($debut != - 1 || $limite != - 1)
   {

@@ -117,7 +117,11 @@
                     </tr>
                   </thead>
                   
-                  
+  <?php if(isset($_SESSION['flash'])) : ?>
+<div class="alert alert-success" role="alert">
+    <?= $_SESSION['flash']; ?>
+</div>
+<?php endif; ?>                 
                   <?php
 
 foreach($posts as $val)
