@@ -1,12 +1,16 @@
 <?php
 require_once('model/CommentManager.php');
-
 require_once('tools/Recaptcha.php');
 
+/**
+ * Class CommentController
+ */
 class CommentController
 {
-    
-    // add comment
+    /**
+     * @param $varComment
+     * @throws Exception
+     */
     public function addComment($varComment)
     {
         $comment        = new Comment($varComment);
@@ -23,13 +27,16 @@ class CommentController
             exit();
         }
     }
-    // signal comment
+    /**
+     * @param $postId
+     * @throws Exception
+     */
     public function signalCom($postId)
     {
         $comment        = new Comment($_GET);
         $commentmanager = new CommentManager();
         $commentmanager->signal($comment);
-        if ($affectedLines === false)
+        if ($commentmanager === false)
         {
             throw new Exception('Erreur');
         }
@@ -40,7 +47,10 @@ class CommentController
             exit();
         }
     }
-    // delete comment
+
+    /**
+     * @throws Exception
+     */
     public function deleteComment()
     {
         $comment        = new Comment($_GET);
@@ -55,6 +65,7 @@ class CommentController
             header("Location:" . $_SERVER['HTTP_REFERER'] . "");
         }
     }
+
     public function editComment()
     {
         $postManager    = new PostManager();
@@ -64,6 +75,7 @@ class CommentController
         require('view/frontend/comment-view.php');
         
     }
+
     public function signaledComments()
     {
         $commentmanager = new CommentManager();

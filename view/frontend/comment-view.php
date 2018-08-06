@@ -2,8 +2,12 @@
 
 <?php ob_start(); ?>
 <?php $allowed = "<div><p><span><br><ul><li><strong><em>"; ?>
+
+
 <div class="container">
-    <h2>Liste des commentaires de l'article : <?= strip_tags($post->getTitle(), $allowed) ?></h2>
+    <h2>Liste des commentaires de l'article :
+        <?= strip_tags($post->getTitle(), $allowed) ?>
+    </h2>
 
 
 
@@ -19,9 +23,9 @@
         </thead>
         <tbody>
             <tr>
-                <?php
-        foreach ($comment as $val) {
-            ?>
+<?php
+foreach ($comment as $val) {
+?>
 
 
                     <td>
@@ -43,13 +47,9 @@
         ?>
         </tbody>
     </table>
-<a class="nav-link" href="index.php?action=admin">Retour à l'administration du site</a>
+    <a class="nav-link" href="index.php?action=admin">Retour à l'administration du site</a>
 </div>
 
 <?php $content = ob_get_clean(); ?>
 
 <?php require 'template.php'; ?>
-
-
- 
- 

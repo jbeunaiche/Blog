@@ -1,50 +1,50 @@
 <?php
-require_once('model/MemberManager.php');
+require_once ('model/MemberManager.php');
 
-require_once('tools/Recaptcha.php');
+require_once ('tools/Recaptcha.php');
 
+/**
+ * Class MemberController
+ */
 class MemberController
 {
-    // Logout
-    
-    public function logout()
+    public function logout ()
     {
         unset($_SESSION['pseudo']);
         $_SESSION['flash'] = 'Vous avez été déconnecté';
-        header('Location: index.php');
+        header ('Location: index.php');
         exit();
     }
-    // Login
-    public function loginMember($pseudo, $password)
+
+    /**
+     * @param $pseudo
+     * @param $password
+     * @throws Exception
+     */
+    public function loginMember ($pseudo, $password)
     {
-        if (isset($_POST['login']))
-        {
-            if (isset($_POST['g-recaptcha-response']))
-            {
+        if (isset($_POST['login'])) {
+            if (isset($_POST['g-recaptcha-response'])) {
                 $recaptcha = new Recaptcha();
-                $resp      = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
-            }
-            else
-            {
-                var_dump($_POST);
+                $resp = $recaptcha->verify ($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
+            } else {
+                var_dump ($_POST);
                 exit();
             }
         }
         $logManager = new MemberManager();
-        $user       = $logManager->getMember($pseudo);
-        if (password_verify($password, $user['password']))
-        {
+        $user = $logManager->getMember ($pseudo);
+        if (password_verify ($password, $user['password'])) {
             $_SESSION['pseudo'] = $user[0];
-            header('Location: index.php?action=admin');
-        }
-        else
-        {
+            header ('Location: index.php?action=admin');
+        } else {
             echo 'Le mot de passe est invalide.';
         }
     }
-    public function login()
+
+    public function login ()
     {
-        require('view/frontend/connection-view.php');
-        
+        require ('view/frontend/connection-view.php');
+
     }
 }

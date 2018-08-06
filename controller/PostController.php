@@ -11,14 +11,15 @@ require_once('tools/Recaptcha.php');
 
 class PostController
 {
-    // List posts
+
     public function listPosts()
     {
         $postManager = new PostManager($_GET);
         $posts       = $postManager->getPosts();
         require('view/frontend/home.php');
-        
+
     }
+
     public function post()
     {
         $postManager    = new PostManager();
@@ -26,9 +27,12 @@ class PostController
         $commentManager = new CommentManager();
         $comment        = $commentManager->getComments($_GET['id']);
         require('view/frontend/post-view.php');
-        
+
     }
-    // add post
+
+    /**
+     * @throws Exception
+     */
     public function addPost()
     {
         $post        = new Post($_POST);
@@ -45,11 +49,16 @@ class PostController
             exit();
         }
     }
+
     public function added()
     {
         require('view/frontend/post-view-add.php');
-        
+
     }
+
+    /**
+     * @throws Exception
+     */
     public function deletePost()
     {
         $post        = new Post($_GET);
@@ -64,13 +73,20 @@ class PostController
             header('Location: index.php?action=admin');
         }
     }
+    /**
+     * @param $postId
+     */
     public function editView($postId)
     {
         $postManager = new PostManager();
         $post        = $postManager->getPost($_GET['id']);
         require('view/frontend/edit-view.php');
-        
+
     }
+
+    /**
+     * @throws Exception
+     */
     public function editPost()
     {
         $post        = new Post($_POST);
@@ -85,14 +101,12 @@ class PostController
             header('Location: index.php?action=admin');
         }
     }
-    
-    
+
     public function admin()
     {
         $postManager = new PostManager(); // Création d'un objet
         $posts       = $postManager->getPosts();
         require('view/frontend/admin.php');
-        
+
     }
-    
 }

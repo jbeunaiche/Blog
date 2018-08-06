@@ -2,8 +2,10 @@
 <?php ob_start(); ?>
 <?php $allowed = "<div><p><span><br><ul><li><strong><em>"; ?>
 
-<div class="container">
+<!-- create a new post -->
 
+<div class="container">
+    
 <h2>Création d'un nouvel article</h2>
 
 <form action="index.php?action=addPost&amp;id=" method="post">
@@ -30,6 +32,8 @@
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
+
+<!-- Script pour générer TINYMCE -->
 
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea' });</script>

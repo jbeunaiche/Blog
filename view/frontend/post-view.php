@@ -4,8 +4,9 @@
 <?php $allowed = "<div><p><span><br><ul><li><strong><em>"; ?>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
         <a class="navbar-brand" href="index.php">Accueil</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
@@ -25,12 +26,13 @@
           </ul>
         </div>
       </div>
-    </nav>
+</nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('public/images/post.jpg')">
-      <div class="overlay"></div>
-      <div class="container">
+
+<header class="masthead" style="background-image: url('public/images/post.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
@@ -38,19 +40,25 @@
             ?></h1>
               
               <span class="meta">Créé par
-                Jean Forteroch le 
+                Jean Forteroche le 
                 <?= $post->getCreated() ?></span>
             </div>
           </div>
         </div>
       </div>
     </header>
-<?php if(isset($_SESSION['flash'])) : ?>
-        <div class="alert alert-danger" role="alert">
+
+    <!-- Message comment posted -->
+
+        <?php if(isset($_SESSION['flash'])) : ?>
+        <div class="alert alert-dark" role="alert">
         <?= $_SESSION['flash']; ?>
         </div>
         <?php endif; ?>
+
+
     <!-- Post Content -->
+
     <article>
       <div class="container">
         <div class="row">
@@ -62,7 +70,8 @@
     </article>
 
     <hr>
-    <!-- Add comment -->
+    <!-- Add a comment -->
+
 <div id="comments" class="container">
           <div class="card my-4">
             <h5 class="card-header">Laissez un commentaire</h5>
@@ -82,7 +91,7 @@
             </div>
           </div>
 
-    <!-- Comments -->
+    <!-- loop to retrieve all comments -->
     <?php
  
 foreach ($comment as $val)
@@ -104,7 +113,7 @@ foreach ($comment as $val)
 }
 ?> 
     
-  </div>       
+</div>       
 
    
 <?php $content = ob_get_clean(); ?>

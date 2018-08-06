@@ -4,14 +4,36 @@
 class Post
 
 {
- private $id;
- private $title;
- private $resume;
- private $content;
- private $created;
- private $memberid;
-  
- public function __construct($value = [])
+    /**
+     * @var
+     */
+    private $id;
+    /**
+     * @var
+     */
+    private $title;
+    /**
+     * @var
+     */
+    private $resume;
+    /**
+     * @var
+     */
+    private $content;
+    /**
+     * @var
+     */
+    private $created;
+    /**
+     * @var
+     */
+    private $memberid;
+
+    /**
+     * Post constructor.
+     * @param array $value
+     */
+    public function __construct($value = [])
 
  {
   if (!empty($value))
@@ -19,7 +41,11 @@ class Post
    $this->hydrate($value);
   }
  }
- public function hydrate(array $data)
+
+    /**
+     * @param array $data
+     */
+    public function hydrate(array $data)
 
  {
   foreach($data as $key => $value)
@@ -35,33 +61,57 @@ class Post
   }
  }
  // Getters
- public function getId()
+
+    /**
+     * @return mixed
+     */
+    public function getId()
 
  {
   return $this->id;
  }
- public function getTitle()
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
 
  {
      return $this->title;
  }
- public function getResume()
+
+    /**
+     * @return mixed
+     */
+    public function getResume()
 
  {
   return $this->resume;
  }
- public function getContent()
+
+    /**
+     * @return mixed
+     */
+    public function getContent()
 
  {
   return $this->content;
  }
- public function getCreated()
+
+    /**
+     * @return mixed
+     */
+    public function getCreated()
 
  {
   return $this->created;
  }
  // Setters
- public function setId($id)
+
+    /**
+     * @param $id
+     */
+    public function setId($id)
 
  {
   if ($id > 0)
@@ -69,7 +119,11 @@ class Post
    $this->id = $id;
   }
  }
- public function setTitle($title)
+
+    /**
+     * @param $title
+     */
+    public function setTitle($title)
 
  {
   if (is_string($title))
@@ -77,7 +131,11 @@ class Post
    $this->title = $title;
   }
  }
-     public function setResume($resume)
+
+    /**
+     * @param $resume
+     */
+    public function setResume($resume)
 
  {
   if (is_string($resume))
@@ -85,7 +143,11 @@ class Post
    $this->resume = $resume;
   }
  }
- public function setContent($content)
+
+    /**
+     * @param $content
+     */
+    public function setContent($content)
 
  {
   if (is_string($content))
@@ -93,7 +155,11 @@ class Post
    $this->content = $content;
   }
  }
- public function setCreated($created)
+
+    /**
+     * @param $created
+     */
+    public function setCreated($created)
 
  {
   $this->created = $created;

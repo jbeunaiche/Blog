@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Administration</title>
-        <link href="public/css/styleadmin.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-        <script src='https://www.google.com/recaptcha/api.js'></script>
+<head>
+    <meta charset="utf-8" />
+    <title>Administration</title>
+    <link href="public/css/styleadmin.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
         
-    </head>
+</head>
         
-    <body>
+<body>
+ 
 <?php $allowed = "<div><p><span><br><ul><li><strong><em>"; ?>
 
-    <div id="wrapper">
+<div id="wrapper">
 
-        <!-- Navigation -->
+      <!-- Navigation -->
       <ul class="sidebar navbar-nav">
         
         
         <li class="nav-item">
           <a class="nav-link" href="index.php">
             
-            <span>Accueil</span></a>
+              <span>Accueil</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.php?action=logout">
+          <li class="nav-item">
+              <a class="nav-link" href="index.php?action=logout">
             
-            <span>Déconnexion</span></a>
-        </li>
+                  <span>Déconnexion</span></a>
+          </li>
       </ul>
 
       <div id="content-wrapper">
@@ -114,14 +115,15 @@
                       
                     </tr>
                   </thead>
+      <!-- Message d'alerte -->
                   
-  <?php if(isset($_SESSION['flash'])) : ?>
+<?php if(isset($_SESSION['flash'])) : ?>
 <div class="alert alert-success" role="alert">
-    <?= $_SESSION['flash']; ?>
+<?= $_SESSION['flash']; ?>
 </div>
-<?php endif; ?>                 
-                  <?php
-
+<?php endif; ?>
+                  
+<?php
 foreach($posts as $val)
 {
 ?>

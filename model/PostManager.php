@@ -4,16 +4,16 @@ require_once ('Post.php');
 require_once ('Manager.php');
 
 /**
- * Class PostManager manage class Post
+ * Class PostManager
  */
 class PostManager extends Manager
 
 {
-	/**
-	 * Add Post in database
-	 * @param Post $post
-	 */
-	public
+
+    /**
+     * @param Post $post
+     */
+    public
 
 	function add(Post $post)
 	{
@@ -24,21 +24,20 @@ class PostManager extends Manager
 		$req->execute();
 	}
 
-	/**
-	 * Delete post
-	 */
-	public
+    /**
+     * @param Post $post
+     */
+    public
 
 	function delete(Post $post)
 	{
 		$this->_db->exec('DELETE FROM post WHERE id = ' . $_GET['id']);
 	}
 
-	/**
-	 * Update Post
-	 * @param Post $post
-	 */
-	public
+    /**
+     * @param Post $post
+     */
+    public
 
 	function edit(Post $post)
 	{
@@ -50,11 +49,12 @@ class PostManager extends Manager
 		$req->execute();
 	}
 
-	/**
-	 * Get single post
-	 * @param $id
-	 */
-	public
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public
 
 	function getPost($id)
 	{
@@ -67,11 +67,12 @@ class PostManager extends Manager
 		return $post;
 	}
 
-	/**
-	 * Get lists posts
-	 * @param first post
-	 */
-	public
+    /**
+     * @param int $debut
+     * @param int $limite
+     * @return mixed
+     */
+    public
 
 	function getPosts($debut = - 1, $limite = - 1)
 	{

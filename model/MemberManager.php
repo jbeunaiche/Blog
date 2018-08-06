@@ -1,11 +1,17 @@
 <?php
 require_once ('Member.php');
 
+/**
+ * Class MemberManager
+ */
 class MemberManager extends Manager
 
 {
-
- public function getMember($pseudo)
+  /**
+     * @param $pseudo
+     * @return mixed
+     */
+    public function getMember($pseudo)
 
  {
   $req = $this->_db->prepare('SELECT * FROM member WHERE pseudo = :pseudo');

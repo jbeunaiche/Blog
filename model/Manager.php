@@ -1,24 +1,47 @@
 <?php
+
+/**
+ * Class Manager
+ */
 class Manager
 
 {
- protected $_db; // Instance de PDO
- public function __construct()
+    /**
+     * @var
+     */
+    protected $_db; // Instance de PDO
+
+    /**
+     * Manager constructor.
+     */
+    public function __construct()
 
  {
   $this->dbConnect();
  }
- protected function dbConnect()
+
+    /**
+     *
+     */
+    protected function dbConnect()
  {
-  $this->_db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
   
+  $this->_db = new PDO('mysql:host=jbeunaicmcblogp4.mysql.db;dbname=jbeunaicmcblogp4;charset=utf8', 'jbeunaicmcblogp4', 'Forteroche72');
  }
- public function getDb()
+
+    /**
+     * @return mixed
+     */
+    public function getDb()
 
  {
   return $this->_db;
  }
- public function setDb($db)
+
+    /**
+     * @param $db
+     */
+    public function setDb($db)
 
  {
   $this->_db = $db;

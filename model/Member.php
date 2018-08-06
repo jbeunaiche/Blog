@@ -2,11 +2,28 @@
 class User
 
 {
- private $id;
- private $pseudo;
- private $mail;
- private $password;
- public function __construct($value = [])
+    /**
+     * @var
+     */
+    private $id;
+    /**
+     * @var
+     */
+    private $pseudo;
+    /**
+     * @var
+     */
+    private $mail;
+    /**
+     * @var
+     */
+    private $password;
+
+    /**
+     * User constructor.
+     * @param array $value
+     */
+    public function __construct($value = [])
 
  {
   if (!empty($value))
@@ -14,7 +31,11 @@ class User
    $this->hydrate($value);
   }
  }
- public function hydrate(array $data)
+
+    /**
+     * @param array $data
+     */
+    public function hydrate(array $data)
 
  {
   foreach($data as $key => $value)
@@ -30,28 +51,48 @@ class User
   }
  }
  // Getters
- public function id()
+
+    /**
+     * @return mixed
+     */
+    public function id()
 
  {
   return $this->id;
  }
- public function pseudo()
+
+    /**
+     * @return mixed
+     */
+    public function pseudo()
 
  {
   return $this->pseudo;
  }
- public function mail()
+
+    /**
+     * @return mixed
+     */
+    public function mail()
 
  {
   return $this->mail;
  }
- public function password()
+
+    /**
+     * @return mixed
+     */
+    public function password()
 
  {
   return $this->password;
  }
  // Setters
- public function setId($id)
+
+    /**
+     * @param $id
+     */
+    public function setId($id)
 
  {
   if ($id > 0)
@@ -59,7 +100,11 @@ class User
    $this->id = $id;
   }
  }
- public function setPseudo($pseudo)
+
+    /**
+     * @param $pseudo
+     */
+    public function setPseudo($pseudo)
 
  {
   if (is_string($pseudo))
@@ -67,7 +112,11 @@ class User
    $this->pseudo = $pseudo;
   }
  }
- public function setMail($mail)
+
+    /**
+     * @param $mail
+     */
+    public function setMail($mail)
 
  {
   if (is_string($mail))
@@ -75,7 +124,11 @@ class User
    $this->mail = $mail;
   }
  }
- public function setPassword($password)
+
+    /**
+     * @param $password
+     */
+    public function setPassword($password)
 
  {
   $this->password = $password;

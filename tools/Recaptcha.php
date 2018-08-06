@@ -5,7 +5,7 @@
 
 class Recaptcha {
     
-private $secret= "6LfFD2QUAAAAALYc_-m5VTW5dvVp3ERBqj2BZER8";
+private $secret= "6LfTh2gUAAAAAMpi4F9QyKpVGzTNggn991UwxNCg";
 private $response;
 private $remoteip;
     

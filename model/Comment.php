@@ -1,107 +1,182 @@
 <?php
 /**
-* Class Comment
-*/
+ * Class Comment
+ */
 class Comment
 
 {
- private $id;
- private $postId;
- private $author;
- private $comment;
- private $createdCom;
- private $status;
- public function __construct($value = [])
+	/**
+	 * @var
+	 */
+	private $id;
+	private $postId;
+	private $author;
+	private $comment;
+	private $createdCom;
+	private $status;
+	/**
+	 * Comment constructor.
+	 * @param array $value
+	 */
+	public
 
- {
-  if (!empty($value))
-  {
-   $this->hydrate($value);
-  }
- }
- public function hydrate(array $data)
+	function __construct($value = [])
+	{
+		if (!empty($value))
+		{
+			$this->hydrate($value);
+		}
+	}
 
- {
-  foreach($data as $key => $value)
-  {
-   // On récupère le nom du setter correspondant à l'attribut.
-   $method = 'set' . ucfirst($key);
-   // Si le setter correspondant existe.
-   if (method_exists($this, $method))
-   {
-    // On appelle le setter.
-    $this->$method($value);
-   }
-  }
- }
- public function getId()
+	/**
+	 * @param array $data
+	 */
+	public
 
- {
-  return $this->id;
- }
- public function getPostId()
+	function hydrate(array $data)
+	{
+		foreach($data as $key => $value)
+		{
 
- {
-  return $this->postId;
- }
- public function getAuthor()
+			// On récupère le nom du setter correspondant à l'attribut.
 
- {
-  return $this->author;
- }
- public function getComment()
+			$method = 'set' . ucfirst($key);
 
- {
-  return $this->comment;
+			// Si le setter correspondant existe.
 
- }
- public function getCreatedCom()
+			if (method_exists($this, $method))
+			{
 
- {
-  return $this->createdCom;
- }
- public function getStatus()
+				// On appelle le setter.
 
- {
-  return $this->status;
- }
- // Setters
- public function setId($id)
+				$this->$method($value);
+			}
+		}
+	}
 
- {
-  if ($id > 0)
-  {
-   $this->id = $id;
-  }
- }
- public function setPostid($id)
+	/**
+	 * @return mixed
+	 */
+	public
 
- {
-  if ($id > 0)
-  {
-   $this->postId = $id;
-  }
- }
- public function setAuthor($author)
+	function getId()
+	{
+		return $this->id;
+	}
 
- {
-  if (is_string($author))
-  {
-   $this->author = $author;
-  }
- }
- public function setComment($comment)
+	/**
+	 * @param $id
+	 */
+	public
 
- {
-  if (is_string($comment))
-  {
-   $this->comment = $comment;
+	function setId($id)
+	{
+		if ($id > 0)
+		{
+			$this->id = $id;
+		}
+	}
 
-  }
- }
- public function setCreatedCom($CreatedCom)
+	/**
+	 * @return mixed
+	 */
+	public
 
- {
-  $this->CreatedCom = $CreatedCom;
- }
+	function getPostId()
+	{
+		return $this->postId;
+	}
+
+	/**
+	 * @param $id
+	 */
+	public
+
+	function setPostid($id)
+	{
+		if ($id > 0)
+		{
+			$this->postId = $id;
+		}
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public
+
+	function getAuthor()
+	{
+		return $this->author;
+	}
+
+	/**
+	 * @param $author
+	 */
+	public
+
+	function setAuthor($author)
+	{
+		if (is_string($author))
+		{
+			$this->author = $author;
+		}
+	}
+
+	// Setters
+
+	/**
+	 * @return mixed
+	 */
+	public
+
+	function getComment()
+	{
+		return $this->comment;
+
+	}
+
+	/**
+	 * @param $comment
+	 */
+	public
+
+	function setComment($comment)
+	{
+		if (is_string($comment))
+		{
+			$this->comment = $comment;
+
+		}
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public
+
+	function getCreatedCom()
+	{
+		return $this->createdCom;
+	}
+
+	/**
+	 * @param $CreatedCom
+	 */
+	public
+
+	function setCreatedCom($CreatedCom)
+	{
+		$this->CreatedCom = $CreatedCom;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public
+
+	function getStatus()
+	{
+		return $this->status;
+	}
 }

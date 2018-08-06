@@ -1,6 +1,9 @@
 <?php
 require_once('Comment.php');
 
+/**
+ * Class CommentManager
+ */
 class CommentManager extends Manager
 {
     /**
@@ -13,15 +16,11 @@ class CommentManager extends Manager
         $req->bindValue(':postid', (int) $postid);
         $req->execute();
         $listsComments = $req->fetchAll(PDO::FETCH_CLASS, "Comment");
-        /**foreach ($listsComments as $comment)
-        {
-            $comment->setCreatedCom(new DateTime($comment->getCreatedCom()));
-        }*/
         $req->closeCursor();
         return $listsComments;
     }
+
     /**
-     * Add comment from post
      * @param Comment $comment
      */
     public function addComment(Comment $comment)
@@ -32,16 +31,16 @@ class CommentManager extends Manager
         $req->bindValue(':postid', $comment->getPostId(), PDO::PARAM_INT);
         $req->execute();
     }
+
     /**
-     * Delete comment
      * @param Comment $comment
      */
     public function delete(Comment $comment)
     {
         $this->_db->exec('DELETE FROM comment WHERE id = ' . $_GET['id']);
     }
+
     /**
-     * Signal comment
      * @param $comment
      */
     public function signal($comment)
@@ -53,7 +52,7 @@ class CommentManager extends Manager
     /**
      * Get list signaled comments
      */
-    
+
     public function getSignaled()
     {
         $req = $this->_db->prepare('SELECT * FROM comment WHERE status > 0');
@@ -65,7 +64,7 @@ class CommentManager extends Manager
         }
         $req->closeCursor();
         return $signaledList;
-        
+
     }
-    
+
 }
