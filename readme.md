@@ -19,12 +19,7 @@ L'interface d'administration sera protégée par mot de passe. La rédaction de 
 
 Vous développerez en PHP sans utiliser de framework pour vous familiariser avec les concepts de base de la programmation. Le code sera construit sur une architecture MVC. Vous développerez autant que possible en orienté objet (au minimum, le modèle doit être construit sous forme d'objet).
 
-Si vous souhaitez héberger le projet en ligne, notre partenaire 1&1 offre 2 mois d'hébergement gratuits aux étudiants pour toute souscription à un pack d'hébergement (plus d'infos).
 
-Ressources complémentaires
-En plus des cours du parcours, vous pouvez consulter les ressources suivantes pour vous aider :
-
-Chapitre "Fonctions d'aggrégation" du cours MySQL
 Fichiers à fournir
 Code HTML, CSS, PHP et JavaScript
 Export de la base de données MySQL
