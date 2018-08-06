@@ -25,7 +25,7 @@ class PostController
         $post           = $postManager->getPost($_GET['id']);
         $commentManager = new CommentManager();
         $comment        = $commentManager->getComments($_GET['id']);
-        require('view/frontend/postView.php');
+        require('view/frontend/post-view.php');
         
     }
     // add post
@@ -41,13 +41,13 @@ class PostController
         else
         {
             $_SESSION['flash'] = 'Article ajouté';
-            header('Location: /project_4/index.php?action=admin');
+            header('Location: index.php?action=admin');
             exit();
         }
     }
     public function added()
     {
-        require('view/frontend/postViewAdd.php');
+        require('view/frontend/post-view-add.php');
         
     }
     public function deletePost()
@@ -61,14 +61,14 @@ class PostController
         }
         else
         {
-            header('Location: /project_4/index.php?action=admin');
+            header('Location: index.php?action=admin');
         }
     }
     public function editView($postId)
     {
         $postManager = new PostManager();
         $post        = $postManager->getPost($_GET['id']);
-        require('view/frontend/editView.php');
+        require('view/frontend/edit-view.php');
         
     }
     public function editPost()
@@ -82,7 +82,7 @@ class PostController
         }
         else
         {
-            header('Location: /project_4/index.php?action=admin');
+            header('Location: index.php?action=admin');
         }
     }
     

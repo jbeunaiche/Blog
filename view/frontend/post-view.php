@@ -77,7 +77,7 @@
                   <textarea class="form-control" rows="3" id="comment" name="comment"></textarea>
                 </div>
                 <input type="hidden" name="postId" value="<?=$post->getId();?>"/>
-                <button type="submit" class="btn btn-primary">Validé</button>
+                <button type="submit" class="btn btn-primary">Valider</button>
               </form>
             </div>
           </div>

@@ -9,14 +9,14 @@ class CommentManager extends Manager
      */
     public function getComments($postid)
     {
-        $req = $this->_db->prepare('SELECT id, postid, author, comment, createdCom FROM comment WHERE postid = :postid ');
+        $req = $this->_db->prepare('SELECT id, postid, author, comment, DATE_FORMAT(createdCom, \'%d/%m/%Y à %Hh%imin%ss\') AS createdCom  FROM comment WHERE postid = :postid ORDER BY createdCom DESC');
         $req->bindValue(':postid', (int) $postid);
         $req->execute();
         $listsComments = $req->fetchAll(PDO::FETCH_CLASS, "Comment");
-        foreach ($listsComments as $comment)
+        /**foreach ($listsComments as $comment)
         {
             $comment->setCreatedCom(new DateTime($comment->getCreatedCom()));
-        }
+        }*/
         $req->closeCursor();
         return $listsComments;
     }

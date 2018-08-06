@@ -11,7 +11,7 @@ class MemberController
     {
         unset($_SESSION['pseudo']);
         $_SESSION['flash'] = 'Vous avez été déconnecté';
-        header('Location: /project_4/index.php');
+        header('Location: index.php');
         exit();
     }
     // Login
@@ -35,7 +35,7 @@ class MemberController
         if (password_verify($password, $user['password']))
         {
             $_SESSION['pseudo'] = $user[0];
-            header('Location: /project_4/index.php?action=admin');
+            header('Location: index.php?action=admin');
         }
         else
         {
@@ -44,7 +44,7 @@ class MemberController
     }
     public function login()
     {
-        require('view/frontend/connectionView.php');
+        require('view/frontend/connection-view.php');
         
     }
 }

@@ -11,6 +11,7 @@ class Manager
  protected function dbConnect()
  {
   $this->_db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
+  
  }
  public function getDb()
 

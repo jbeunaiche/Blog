@@ -61,14 +61,14 @@ class CommentController
         $post           = $postManager->getPost($_GET['id']);
         $commentManager = new CommentManager();
         $comment        = $commentManager->getComments($_GET['id']);
-        require('view/frontend/commentView.php');
+        require('view/frontend/comment-view.php');
         
     }
     public function signaledComments()
     {
         $commentmanager = new CommentManager();
         $signaled       = $commentmanager->getSignaled();
-        require('view/frontend/signalView.php');
+        require('view/frontend/signal-view.php');
         
     }
     
