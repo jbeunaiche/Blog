@@ -12,11 +12,9 @@
     <body>
 <?php $allowed = "<div><p><span><br><ul><li><strong><em>"; ?>
 
-    
-
     <div id="wrapper">
 
-      <!-- Sidebar -->
+        <!-- Navigation -->
       <ul class="sidebar navbar-nav">
         
         
@@ -36,13 +34,13 @@
 
         <div class="container-fluid">
 
-          <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">Tableau de bord</li>
             <li class="breadcrumb-item ">Administration</li>
           </ol>
 
-          <!-- Icon Cards-->
+          <!-- Card : ajouter un article, listes des articles et commentaires signalés. -->
+            
           <div class="row">
             <div class="col-xl-3 col-sm-6 mb-3">
               <div class="card text-white bg-primary o-hidden h-100">
@@ -96,8 +94,8 @@
           </div>
 
           
-
-          <!-- DataTables Example -->
+          <!-- Posts list -->
+            
           <div  class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
@@ -108,7 +106,7 @@
                   <thead>
                     <tr>
                       <th id="listpost">Titre</th>
-                      <th>Auteur</th>
+                      
                       <th>Date</th>
                       <th>Supprimer</th>
                       <th>Mise à jour </th>
@@ -128,8 +126,8 @@ foreach($posts as $val)
 {
 ?>
                     <tr>
-                      <td><?= htmlspecialchars($val->getTitle()); ?></td>
-                      <td><?= htmlspecialchars($val->getTitle()); ?></td>
+                      <td><?= strip_tags($val->getTitle(), $allowed); ?></td>
+                      
                       <td><?= htmlspecialchars($val->getCreated()); ?></td>
                       <td><a href="index.php?action=deletePost&amp;id=<?= htmlspecialchars($val->getId()); ?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>  
                       <td><a href="index.php?action=edit&amp;id=<?= htmlspecialchars($val->getId()); ?>"><button type="button" class="btn btn-outline-warning">Modifier</button></a></td>
@@ -146,16 +144,9 @@ foreach($posts as $val)
               </div>
             </div>
           </div>
-
         </div>
-        <!-- /.container-fluid -->
-
-       
-
+       </div>
       </div>
-      <!-- /.content-wrapper -->
-
-    </div>
 
         
         

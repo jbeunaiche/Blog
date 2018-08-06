@@ -16,7 +16,7 @@
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">© 2018 Copyright:
-    <a href="www.jbeunaiche.fr"> Beunaiche Julien</a>
+    Beunaiche Julien
   </div>
   <!-- Copyright -->
 

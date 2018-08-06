@@ -16,9 +16,7 @@
             <li class="nav-item">
               <a class="nav-link" href="index.php?action=loginMember">Connexion</a>
             </li>
-              <li class="nav-item">
-                    <a class="nav-link" href="index.php?action=addMember">Inscription</a>
-                </li>
+             
             <?php if(isset($_SESSION['pseudo'])) :?>
             <li class="nav-item">
                     <a class="nav-link" href="index.php?action=admin">Administration</a>
@@ -47,6 +45,7 @@
         </div>
       </div>
     </header>
+    <!-- Deconnection message -->
 <?php if(isset($_SESSION['flash'])) : ?>
 <div class="alert alert-primary" role="alert">
     <?= $_SESSION['flash']; ?>
@@ -76,7 +75,7 @@ foreach ($posts as $val)
           </div>
           <hr>
           
-          <!-- Pager -->
+          
           
         </div>
       </div>

@@ -4,23 +4,7 @@ require_once ('Member.php');
 class MemberManager extends Manager
 
 {
-    /**
-	 * Add Member to database
-	 * @param member 
-	 */
- public function add(Member $member)
 
- {
-  $req = $this->_db->prepare('INSERT INTO member(pseudo, mail, password) VALUES(:pseudo, :mail, :password');
-  $req->bindValue(':pseudo', $member->getPseudo() , PDO::PARAM_STR);
-  $req->bindValue(':mail', $member->getMail() , PDO::PARAM_STR);
-  $req->bindValue(':password', $member->getPassword() , PDO::PARAM_STR);
-  $req->execute();
- }
-    /**
-	 * Select Member 
-	 * 
-	 */
  public function getMember($pseudo)
 
  {

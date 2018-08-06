@@ -62,7 +62,7 @@
     </article>
 
     <hr>
-
+    <!-- Add comment -->
 <div id="comments" class="container">
           <div class="card my-4">
             <h5 class="card-header">Laissez un commentaire</h5>
@@ -82,7 +82,7 @@
             </div>
           </div>
 
-          <!-- Comment -->
+    <!-- Comments -->
     <?php
  
 foreach ($comment as $val)
@@ -106,7 +106,7 @@ foreach ($comment as $val)
     
   </div>       
 
-    <!-- /.container -->
+   
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
