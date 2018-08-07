@@ -3,30 +3,35 @@
 <?php $allowed = "<div><p><span><br><ul><li><strong><em>"; ?>
 
 <!-- create a new post -->
-
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="index.php?action=admin">
+    
+    Administration
+  </a>
+</nav>
+<br/>
 <div class="container">
     
 <h2>Création d'un nouvel article</h2>
 
 <form action="index.php?action=addPost&amp;id=" method="post">
     <div>
-        <label for="title">Titre</label><br />
+        <label for="title">Titre</label><br/>
         <input type="text" id="title" name="title" >
     </div>
     <div>
-        <label for="chapiter">Résumé</label><br />
+        <label for="chapiter">Résumé</label><br/>
         <textarea type="text" id="resume" name="resume" ></textarea>
     </div>
     <div>
         <label for="content">Texte de l'article</label><br />
         <textarea id="content" name="content"></textarea>
     </div>
-    <div class="col-md-offset-3 col-md-9">
-            <input type="submit" class="btn btn-default" name="add" value="Ajout de l'article" />
-    </div>
+    <br>
+            <input type="submit" class="btn btn-outline-success" name="add" value="Ajouter l'article" />
+    
 </form>
 
-<p><a class="nav-link" href="index.php?action=admin">Retour à l'administration du site</a></p>
 </div>
 
 <?php $content = ob_get_clean(); ?>

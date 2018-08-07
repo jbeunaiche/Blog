@@ -62,7 +62,9 @@ class CommentController
         }
         else
         {
+            $_SESSION['flash'] = 'Commentaire effacé !';
             header("Location:" . $_SERVER['HTTP_REFERER'] . "");
+            exit();
         }
     }
 

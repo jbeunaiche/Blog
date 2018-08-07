@@ -77,7 +77,7 @@ try
         {
             if (isset($_SESSION['pseudo']))
             {
-                if (isset($_GET['id']) > 0)
+                if (isset($_GET['id']) > 0) // Si la variable est défini ou non 
                 {
                     if (!empty($_POST['title']) && !empty($_POST['resume']) && !empty($_POST['content']))
                     {

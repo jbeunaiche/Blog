@@ -3,12 +3,16 @@
 <?php ob_start(); ?>
 <?php $allowed = "<div><p><span><br><ul><li><strong><em>"; ?>
 
-
+<br>
 <div class="container">
     <h2>Liste des commentaires de l'article :
         <?= strip_tags($post->getTitle(), $allowed) ?>
     </h2>
-
+    <?php if(isset($_SESSION['flash'])) : ?>
+    <div class="alert alert-danger" role="alert">
+        <?= $_SESSION['flash']; ?>
+    </div>
+    <?php endif; ?>
 
 
     <table class="table table-hover table-dark">
@@ -23,7 +27,7 @@
         </thead>
         <tbody>
             <tr>
-<?php
+                <?php
 foreach ($comment as $val) {
 ?>
 
@@ -47,7 +51,8 @@ foreach ($comment as $val) {
         ?>
         </tbody>
     </table>
-    <a class="nav-link" href="index.php?action=admin">Retour à l'administration du site</a>
+    <a href="index.php?action=admin"><button type="button" class="btn btn-outline-success">Administration du site</button></a>
+
 </div>
 
 <?php $content = ob_get_clean(); ?>
