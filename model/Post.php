@@ -24,10 +24,6 @@ class Post
      * @var
      */
     private $created;
-    /**
-     * @var
-     */
-    private $memberid;
 
     /**
      * Post constructor.
