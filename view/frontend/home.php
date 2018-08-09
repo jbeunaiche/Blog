@@ -14,10 +14,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
+            <?php if(!isset($_SESSION['pseudo'])) :?>
             <li class="nav-item">
               <a class="nav-link" href="index.php?action=loginMember">Connexion</a>
             </li>
-            
+            <?php endif; ?>
             <!-- Si l'utilisateur est connecté la partie administration et déconnexion apparait --> 
             
             <?php if(isset($_SESSION['pseudo'])) :?>

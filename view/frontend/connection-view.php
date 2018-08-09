@@ -20,13 +20,13 @@
                     <input id="Password" type="password" class="form-control" name="password" ng-model="Password" />
                 </div>
             </div>
-
+            <div class="g-recaptcha" data-sitekey="6LfTh2gUAAAAAAUkSq2sVzS5KwZqPbnV58b4PVGH"></div>
             <div class="form-group">
                 <div class="col-md-offset-3 col-md-9">
                     <input type="submit" class="btn btn-default" name="login" value="Je me connecte" />
                 </div>
             </div>
-            <div class="g-recaptcha" data-sitekey="6LfTh2gUAAAAAAUkSq2sVzS5KwZqPbnV58b4PVGH"></div>
+            
         </form>
 
     </div>

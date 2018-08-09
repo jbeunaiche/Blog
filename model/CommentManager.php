@@ -49,6 +49,12 @@ class CommentManager extends Manager
         $req->bindValue(':id', (int) $comment->getId());
         $req->execute();
     }
+    public function change($comment)
+    {
+        $req = $this->_db->prepare('UPDATE comment SET status = 0  WHERE id = :id ');
+        $req->bindValue(':id', (int) $comment->getId());
+        $req->execute();
+    }
     /**
      * Get list signaled comments
      */
@@ -66,5 +72,13 @@ class CommentManager extends Manager
         return $signaledList;
 
     }
+    
+    public function countComments() {
+		$req = $this->_db->prepare('SELECT COUNT(*) FROM comment WHERE postid = :postid');
+		$req->bindValue(':postid', $postid);
+		$req->execute();
+		return $req->fetchColumn();
+	}
 
+    
 }

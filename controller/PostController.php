@@ -15,7 +15,7 @@ class PostController
     public function listPosts()
     {
         $postManager = new PostManager($_GET);
-        $posts       = $postManager->getPosts();
+        $posts       = $postManager->getPosts();   
         require('view/frontend/home.php');
 
     }
@@ -37,7 +37,7 @@ class PostController
     {
         $post        = new Post($_POST);
         $postmanager = new PostManager();
-        $postmanager->add($post);
+        $postmanager->add($post); // Méthode add
         if ($postmanager === false)
         {
             throw new Exception('Impossible d\'ajouter l\'article!');

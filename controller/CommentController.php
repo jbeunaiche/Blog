@@ -27,6 +27,22 @@ class CommentController
             exit();
         }
     }
+    public function change($postId)
+    {
+        $comment        = new Comment($_GET);
+        $commentmanager = new CommentManager();
+        $commentmanager->change($comment);
+        if ($commentmanager === false)
+        {
+            throw new Exception('Erreur');
+        }
+        else
+        {
+            
+            header("Location:" . $_SERVER['HTTP_REFERER'] . "");
+            
+        }
+    }
     /**
      * @param $postId
      * @throws Exception
@@ -80,10 +96,13 @@ class CommentController
 
     public function signaledComments()
     {
+        
         $commentmanager = new CommentManager();
         $signaled       = $commentmanager->getSignaled();
         require('view/frontend/signal-view.php');
         
     }
     
+     
+
 }

@@ -60,22 +60,7 @@
                 </a>
             </div>
           </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-warning o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-list"></i>
-                </div>
-                <div class="mr-5">Listes des articles</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#listpost">
-                  <span class="float-left">Voir la liste</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
-            </div>
-          </div>
+          
           <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-white bg-success o-hidden h-100">
               <div class="card-body">
@@ -97,7 +82,7 @@
 
 
         <!-- Posts list -->
-
+          <div id="no-more-tables">
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i> Liste des articles du blog</div>
@@ -106,8 +91,7 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th id="listpost">Titre</th>
-
+                    <th>Titre</th>
                     <th>Date</th>
                     <th>Supprimer</th>
                     <th>Mise à jour </th>
@@ -128,29 +112,29 @@ foreach($posts as $val)
 {
 ?>
                   <tr>
-                    <td>
+                    <td data-title="Titre">
                       <?= strip_tags($val->getTitle(), $allowed); ?>
                     </td>
 
-                    <td>
+                    <td data-title="Date">
                       <?= htmlspecialchars($val->getCreated()); ?>
                     </td>
-                    <td><a href="index.php?action=deletePost&amp;id=<?= htmlspecialchars($val->getId()); ?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
-                    <td><a href="index.php?action=edit&amp;id=<?= htmlspecialchars($val->getId()); ?>"><button type="button" class="btn btn-outline-warning">Modifier</button></a></td>
-                    <td><a href="index.php?action=editComment&amp;id=<?= htmlspecialchars($val->getId()); ?>"><button type="button" class="btn btn-outline-dark">Commentaires</button></a></td>
+                    <td data-title="Supprimer"><a href="index.php?action=deletePost&amp;id=<?= htmlspecialchars($val->getId()); ?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
+                    <td data-title="Maj"><a href="index.php?action=edit&amp;id=<?= htmlspecialchars($val->getId()); ?>"><button type="button" class="btn btn-outline-warning">Modifier</button></a></td>
+                    <td data-title="Com's"><a href="index.php?action=editComment&amp;id=<?= htmlspecialchars($val->getId()); ?>"><button type="button" class="btn btn-outline-dark">Commentaires</button></a></td>
 
 
                   </tr>
                   <?php
 }
-
 ?>
 
               </table>
             </div>
           </div>
         </div>
-      </div>
+      
+              </div></div>
     </div>
   </div>
 

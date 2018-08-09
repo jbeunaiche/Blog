@@ -26,11 +26,13 @@ try
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        
         elseif ($_GET['action'] == 'signaledComments')
         {
             if (isset($_SESSION['pseudo']))
             {
                 $commentController->signaledComments();
+                
             }
             else
             {
@@ -103,6 +105,7 @@ try
             if (isset($_SESSION['pseudo']))
             {
                 $postController->admin();
+                
             }
             else
             {
@@ -164,11 +167,16 @@ try
                 throw new Exception('Erreur');
             }
         }
+        elseif ($_GET['action'] == 'admin')
+            {
+                countComments();
+            }
         elseif ($_GET['action'] == 'editComment')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
             {
                 $commentController->editComment();
+                
             }
             else
             {
@@ -186,10 +194,24 @@ try
                 throw new Exception('Erreur');
             }
         }
+        elseif ($_GET['action'] == 'change')
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0)
+            {
+                $commentController->change($_GET['id']);
+            }
+            else
+            {
+                throw new Exception('Erreur');
+            }
+        }
+        
     }
     else
     {
         $postController->listPosts();
+        
+        
     }
 }
 catch (Exception $e)

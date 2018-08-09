@@ -2,21 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f1e48d2-242c-4356-bdc6-8c903f4fbd54" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CommentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/MemberController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/MemberController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/CommentManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/CommentManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/Manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Manager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Member.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/MemberManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/MemberManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/PostManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/PostManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/Recaptcha.php" beforeDir="false" afterPath="$PROJECT_DIR$/tools/Recaptcha.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/styleadmin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styleadmin.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/frontend/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/frontend/admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/frontend/connection-view.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/frontend/connection-view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/frontend/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/frontend/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/frontend/post-view.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/frontend/post-view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/frontend/signal-view.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/frontend/signal-view.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,12 +23,14 @@
     <session id="1715858184">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.22" value="1" />
+          <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -49,20 +45,30 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="php" value="43" />
+          <entry key="php" value="44" />
           <entry key="vue" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PHP" value="43" />
+          <entry key="PHP" value="44" />
           <entry key="Vue.js" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/view/frontend/admin.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="191">
+              <caret line="125" selection-start-line="125" selection-end-line="125" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,7 +77,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/view/frontend/connection-view.php" />
-        <option value="$PROJECT_DIR$/view/frontend/admin.php" />
         <option value="$PROJECT_DIR$/view/frontend/home.php" />
         <option value="$PROJECT_DIR$/view/frontend/post-view.php" />
         <option value="$PROJECT_DIR$/view/frontend/signal-view.php" />
@@ -86,6 +91,7 @@
         <option value="$PROJECT_DIR$/controller/MemberController.php" />
         <option value="$PROJECT_DIR$/controller/PostController.php" />
         <option value="$PROJECT_DIR$/model/Comment.php" />
+        <option value="$PROJECT_DIR$/view/frontend/admin.php" />
       </list>
     </option>
   </component>
@@ -106,7 +112,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -144,6 +149,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -178,17 +184,20 @@
       <workItem from="1533560281874" duration="100000" />
       <workItem from="1533560384875" duration="220000" />
       <workItem from="1533560851526" duration="213000" />
+      <workItem from="1533739160935" duration="86000" />
+      <workItem from="1533802969166" duration="15000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2720000" />
+    <option name="totallyTimeSpent" value="2821000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.25416037" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26172465" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
@@ -336,8 +345,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/view/frontend/admin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        <state relative-caret-position="191">
+          <caret line="125" selection-start-line="125" selection-end-line="125" />
         </state>
       </provider>
     </entry>
