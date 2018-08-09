@@ -73,7 +73,7 @@ class CommentManager extends Manager
 
     }
     
-    public function countComments() {
+    public function countComments($postid) {
 		$req = $this->_db->prepare('SELECT COUNT(*) FROM comment WHERE postid = :postid');
 		$req->bindValue(':postid', $postid);
 		$req->execute();

@@ -102,7 +102,12 @@ class CommentController
         require('view/frontend/signal-view.php');
         
     }
-    
+    public function countComments()
+    {
+        $commentmanager = new CommentManager();
+        $total = $commentmanager->countComments($_GET['id']);
+        require('view/frontend/admin.php');
+    }
      
 
 }

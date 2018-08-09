@@ -105,6 +105,7 @@ try
             if (isset($_SESSION['pseudo']))
             {
                 $postController->admin();
+                $postController->countComments();
                 
             }
             else
