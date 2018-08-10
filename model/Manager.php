@@ -23,7 +23,7 @@ class Manager
 
     protected function dbConnect()
  {
-  $this->_db = new PDO('mysql:host=jbeunaicmcblogp4.mysql.db;dbname=jbeunaicmcblogp4;charset=utf8', 'jbeunaicmcblogp4', '');
+  $this->_db = new PDO('mysql:host=jbeunaicmcblogp4.mysql.db;dbname=jbeunaicmcblogp4;charset=utf8', 'jbeunaicmcblogp4', 'Forteroche72');
  }
 
     /**

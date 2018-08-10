@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5f1e48d2-242c-4356-bdc6-8c903f4fbd54" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CommentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/CommentManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/CommentManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Manager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/styleadmin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styleadmin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/frontend/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/frontend/admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/frontend/connection-view.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/frontend/connection-view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/frontend/signal-view.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/frontend/signal-view.php" afterDir="false" />
-    </list>
+    <list default="true" id="5f1e48d2-242c-4356-bdc6-8c903f4fbd54" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,14 +12,15 @@
     <session id="1715858184">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.22" value="1" />
+          <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -62,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/view/frontend/admin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="125" selection-start-line="125" selection-end-line="125" />
+            <state relative-caret-position="2125">
+              <caret line="125" column="22" selection-start-line="125" selection-start-column="22" selection-end-line="125" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -112,6 +102,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -119,37 +110,10 @@
               <item name="Project_4" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project_4" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Project_4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project_4" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project_4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project_4" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project_4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project_4" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project_4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project_4" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project_4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project_4" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -186,18 +150,18 @@
       <workItem from="1533560851526" duration="213000" />
       <workItem from="1533739160935" duration="86000" />
       <workItem from="1533802969166" duration="15000" />
+      <workItem from="1533921094188" duration="4000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2821000" />
+    <option name="totallyTimeSpent" value="2825000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26172465" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2655068" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
@@ -345,8 +309,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/view/frontend/admin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="125" selection-start-line="125" selection-end-line="125" />
+        <state relative-caret-position="2125">
+          <caret line="125" column="22" selection-start-line="125" selection-start-column="22" selection-end-line="125" selection-end-column="22" />
         </state>
       </provider>
     </entry>

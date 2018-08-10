@@ -61,7 +61,7 @@ class CommentManager extends Manager
 
     public function getSignaled()
     {
-        $req = $this->_db->prepare('SELECT * FROM comment WHERE status > 0');
+        $req = $this->_db->prepare('SELECT * FROM comment a JOIN post b ON a.postid = b.id WHERE status > 0');
         $req->execute();
         $signaledList = $req->fetchAll(PDO::FETCH_CLASS, "Comment");
         foreach ($signaledList as $status)
