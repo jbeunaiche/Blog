@@ -62,9 +62,9 @@ class PostManager extends Manager
 		$req->bindValue(':id', (int)$id);
 		$req->execute();
 		$req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Post::class);
-
 		$post = $req->fetch();
 		return $post;
+		
 	}
 
     /**

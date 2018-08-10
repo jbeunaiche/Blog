@@ -121,9 +121,9 @@ foreach($posts as $val)
                     </td>
                     <td data-title="Supprimer"><a href="index.php?action=deletePost&amp;id=<?= htmlspecialchars($val->getId()); ?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
                     <td data-title="Maj"><a href="index.php?action=edit&amp;id=<?= htmlspecialchars($val->getId()); ?>"><button type="button" class="btn btn-outline-warning">Modifier</button></a></td>
-                    <td data-title="Com's"><a href="index.php?action=editComment&amp;id=<?= htmlspecialchars($val->getId()); ?>"><button type="button" class="btn btn-outline-dark">Commentaires</button></a></td>
+                    <td data-title="Com's"><a href="index.php?action=editComment&amp;id=<?= htmlspecialchars($val->getId()); ?>"><button type="button" class="btn btn-outline-dark">Commentaires (<?php echo($total) ?>)</button></a></td>
 
-
+                      
                   </tr>
                   <?php
 }

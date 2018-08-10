@@ -3,7 +3,7 @@
 
 <nav class="navbar navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="index.php">Retour à l'accueil du site</a>
+        <a class="navbar-brand" href="http://forteroche.jbeunaiche.fr">Retour à l'accueil du site</a>
         
       </div>
     </nav><br><br>

@@ -17,13 +17,13 @@ try
         }
         elseif ($_GET['action'] == 'post')
         {
-            if (isset($_GET['id']) && $_GET['id'] > 0)
+            if (isset($_GET['id']) && $_GET['id'] > 0 )
             {
                 $postController->post();
             }
             else
             {
-                throw new Exception('Aucun identifiant de billet envoyé');
+                header ('Location: view/frontend/page404.php'); 
             }
         }
         
@@ -105,7 +105,6 @@ try
             if (isset($_SESSION['pseudo']))
             {
                 $postController->admin();
-                $postController->countComments();
                 
             }
             else
@@ -168,10 +167,7 @@ try
                 throw new Exception('Erreur');
             }
         }
-        elseif ($_GET['action'] == 'admin')
-            {
-                countComments();
-            }
+        
         elseif ($_GET['action'] == 'editComment')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0)
@@ -217,6 +213,6 @@ try
 }
 catch (Exception $e)
 {
-    echo 'Attention : ' . $e->getMessage();
+    echo '' . $e->getMessage();
 }
 unset($_SESSION['flash']);
