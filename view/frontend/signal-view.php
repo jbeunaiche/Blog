@@ -42,7 +42,7 @@ foreach($signaled as $val)
 ?>
           <tr>
             <td>
-             
+              <?php echo ($val->title); ?>
             
             <td>
               <?= strip_tags($val->getAuthor(), $allowed); ?>
