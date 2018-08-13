@@ -21,7 +21,6 @@ $allowed = "<div><p><span><br><ul><li><strong><em>";
             <th>Chapitre</th>
             <th>Auteur</th>
             <th>Commentaire</th>
-            <th>Date</th>
             <th>Supprimer</th>
             <th>Modifier le statut du commentaire</th>
 
@@ -50,11 +49,9 @@ foreach($signaled as $val)
             <td>
               <?= strip_tags($val->getComment(), $allowed); ?>
             </td>
-            <td>
-              <?= htmlspecialchars($val->getCreatedCom()); ?>
-            </td>
-            <td><a href="index.php?action=deleteCom&amp;id=<?= ($val->getId()) ?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
-            <td><a href="index.php?action=change&amp;id=<?= ($val->getId()) ?>"><button type="button" class="btn btn-outline-warning">Modifier le statut du commentaire</button></a></td>
+            
+            <td><a href="index.php?action=deleteCom&amp;id=<?= ($val->getPost()->getId()); ?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a></td>
+            <td><a href="index.php?action=change&amp;id=<?= ($val->getPost()->getId()); ?>"><button type="button" class="btn btn-outline-warning">Modifier le statut du commentaire</button></a></td>
             
 
 

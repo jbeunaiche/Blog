@@ -109,7 +109,7 @@ foreach ($comment as $val)
             <?= ($val->getCreatedCom()); ?>
         </h5>
         <?= strip_tags($val->getComment(), $allowed); ?> <a href="index.php?action=signalCom&amp;id=<?= htmlspecialchars($val->getId())?>">(Signaler le commentaire)</a>
-
+       
       </div>
     </div>
     <hr>

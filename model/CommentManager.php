@@ -28,7 +28,7 @@ class CommentManager extends Manager
         $req = $this->_db->prepare('INSERT INTO comment (postid, author, comment, createdCom) VALUES(:postid, :author, :comment, NOW())');
         $req->bindValue(':author', $comment->getAuthor(), PDO::PARAM_STR);
         $req->bindValue(':comment', $comment->getComment(), PDO::PARAM_STR);
-        $req->bindValue(':postid', $comment->getPostId(), PDO::PARAM_INT);
+        $post = new Post(['id' =>$comment['id']]);
         $req->execute();
     }
 
@@ -65,25 +65,17 @@ class CommentManager extends Manager
         $req = $this->_db->query('SELECT comment.*, post.title FROM comment LEFT JOIN post ON comment.postid = post.id WHERE status > 0');
         $i = 0; 
         $req->setFetchMode(PDO::FETCH_ASSOC);
-        while ($comment = $req->fetch());
+        while ($comment = $req->fetch())
         {
-            $post = new Post(['title' => $comment['title']]);
-            $com = new Comment(['author' => $comment['author'], 'comment' => $comment['comment'] , 'createdCom' => $comment['createdCom'] , 'status' =>$comment['status'], 'post' => $post ]);
+            $post = new Post(['id' =>$comment['id'],'title' => $comment['title']]);
+            $com = new Comment([ 'author' => $comment['author'], 'comment' => $comment['comment'] , 'createdCom' => $comment['createdCom'] , 'status' =>$comment['status'], 'post' => $post ]);
             $signaledList[$i++]= $com;
-                var_dump ($comment);
+           
         }
         $req->closeCursor();
         return $signaledList;
 
     }
-  /** 
-    public function countComments($postid)
-    {
-		$req = $this->_db->prepare('SELECT COUNT(*) FROM comment WHERE postid = :postid');
-		$req->bindValue(':postid', $postid);
-		$req->execute();
-		return $req->fetchColumn();
-	}
- */
+  
     
 }

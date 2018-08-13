@@ -9,7 +9,7 @@ class Comment
 	 * @var
 	 */
 	private $id;
-	private $postId;
+	private $post;
 	private $author;
 	private $comment;
 	private $createdCom;
@@ -82,9 +82,9 @@ class Comment
 	 */
 	public
 
-	function getPostId()
+	function getPost()
 	{
-		return $this->postId;
+		return $this->post;
 	}
 
 	/**
@@ -92,12 +92,11 @@ class Comment
 	 */
 	public
 
-	function setPostid($id)
+	function setPost($post)
 	{
-		if ($id > 0)
-		{
-			$this->postId = $id;
-		}
+		
+			$this->post = $post;
+		
 	}
 
 	/**

@@ -96,9 +96,8 @@ class CommentController
 
     public function signaledComments()
     {
-        $postManager    = new PostManager();
-        $post           = $postManager->getPost($_GET['id']);
-        $commentmanager = new CommentManager();
+        
+        $commentmanager = new CommentManager($_GET);
         $signaled       = $commentmanager->getSignaled();
         require('view/frontend/signal-view.php');
         

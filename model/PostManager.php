@@ -75,17 +75,52 @@ class PostManager extends Manager
     public
 
 	function getPosts($debut = - 1, $limite = - 1)
-	{
-		$req = 'SELECT id, title, resume, content, DATE_FORMAT(created, \'%d/%m/%Y à %Hh%imin%ss\') AS created FROM post ORDER BY created DESC ';
+	{   //DATE_FORMAT(created, \'%d/%m/%Y à %Hh%imin%ss\') AS created
+		$listPosts = array();
+		$i = 0;
+		$req = ('SELECT a.id, a.title, a.resume, a.content, a.created, COUNT(b.postid) AS nb  FROM post a LEFT JOIN comment b ON b.postid = a.id   GROUP BY
+    a.id ORDER BY a.created DESC ');
 		if ($debut != - 1 || $limite != - 1)
 		{
 			$req.= ' LIMIT ' . (int)$limite . ' OFFSET ' . (int)$debut;
 		}
 		
 		$req = $this->getDb()->query($req);
-		$req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Post');
-		$listPosts = $req->fetchAll();
+		$req->setFetchMode(PDO::FETCH_ASSOC);
+		while ($post = $req->fetch())
+		
+		{
+			
+			$nbcom = new Comment(['id' => $post['id']]);
+			$article = new Post(['id' => $post['id'], 'title' => $post['title'], 'resume' => $post['resume'] , 'created' => $post['created'] ,  'post' => $nbcom ]);
+			$listPosts[$i++] = $article;
+			
+		}
+		
+		
+		
 		$req->closeCursor();
 		return $listPosts;
-	}
+	} /**
+public function getSignaled()
+    {
+        $signaledList = array();
+        $req = $this->_db->query('SELECT comment.*, post.title FROM comment LEFT JOIN post ON comment.postid = post.id WHERE status > 0');
+        $i = 0; 
+        $req->setFetchMode(PDO::FETCH_ASSOC);
+        while ($comment = $req->fetch())
+        {
+            $post = new Post(['id' =>$comment['id'],'title' => $comment['title']]);
+            $com = new Comment([ 'author' => $comment['author'], 'comment' => $comment['comment'] , 'createdCom' => $comment['createdCom'] , 'status' =>$comment['status'], 'post' => $post ]);
+            $signaledList[$i++]= $com;
+          
+        }
+        $req->closeCursor();
+        return $signaledList;
+
+    }*/
+
+
 }
+
+
