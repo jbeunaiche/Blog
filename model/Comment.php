@@ -9,7 +9,7 @@ class Comment
 	 * @var
 	 */
 	private $id;
-	private $postid;
+	private $postId;
 	private $author;
 	private $comment;
 	private $createdCom;

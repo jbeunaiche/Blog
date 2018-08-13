@@ -59,27 +59,31 @@ class CommentManager extends Manager
      * Get list signaled comments
      */
 
-    public function getSignaled()
+  /**  public function getSignaled()
     {
-        $req = $this->_db->prepare('SELECT * FROM comment a JOIN post b ON a.postid = b.id WHERE status > 0');
-        $req->execute();
-        $signaledList = $req->fetchAll(PDO::FETCH_CLASS, "Comment");
-        foreach ($signaledList as $status)
+        $signaledList = array();
+        $req = $this->_db->query('SELECT comment.*, post.title FROM comment LEFT JOIN post ON comment.postid = post.id WHERE status > 0');
+        $i = 0; 
+        $req->setFetchMode(PDO::FETCH_ASSOC);
+        while ($comment = $req->fetch());
         {
-            $status->setCreatedCom(new DateTime($status->getCreatedCom()));
+            $post = new Post(['title' => $comment['title']]);
+            $com = new Comment(['author' => $comment['author'], 'comment' => $comment['comment'] , 'createdCom' => $comment['createdCom'] , 'status' =>$comment['status'], 'post' => $post ]);
+            $signaledList[$i++]= $com;
+                var_dump ($comment);
         }
         $req->closeCursor();
         return $signaledList;
 
     }
-    
-    public function countComments()
+   
+    public function countComments($postid)
     {
 		$req = $this->_db->prepare('SELECT COUNT(*) FROM comment WHERE postid = :postid');
 		$req->bindValue(':postid', $postid);
 		$req->execute();
 		return $req->fetchColumn();
 	}
-
+ */
     
 }

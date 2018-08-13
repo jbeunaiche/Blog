@@ -36,7 +36,7 @@ try
             }
             else
             {
-                throw new Exception('Accès impossible veuillez vous connecter !');
+                throw new Exception('Impossible de signaler le commentaire!');
             }
         }
         elseif ($_GET['action'] == 'addComment')
@@ -120,7 +120,7 @@ try
             }
             else
             {
-                throw new Exception('Suppression impossible veuillez vous connecter !');
+                throw new Exception('Suppression impossible  !');
             }
         }
         elseif ($_GET['action'] == 'deleteCom')
@@ -207,6 +207,7 @@ try
     else
     {
         $postController->listPosts();
+        
         
         
     }

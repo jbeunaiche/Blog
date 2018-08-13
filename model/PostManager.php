@@ -81,7 +81,7 @@ class PostManager extends Manager
 		{
 			$req.= ' LIMIT ' . (int)$limite . ' OFFSET ' . (int)$debut;
 		}
-
+		//SELECT a.id, a.title, a.content, a.created, COUNT(b.comment) AS nbcomment FROM post a INNER JOIN comment b ON b.postid = a.id WHERE a.id = 16
 		$req = $this->getDb()->query($req);
 		$req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Post');
 		$listPosts = $req->fetchAll();
