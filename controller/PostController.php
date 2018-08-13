@@ -104,13 +104,12 @@ class PostController
 
     public function admin()
     {
-        
-        //$commentmanager = new CommentManager();
-       // $total          = $commentmanager->countComments($_GET['id']);
+       
         
         $postManager    = new PostManager(); // Création d'un objet
         $posts          = $postManager->getPosts();
         require('view/frontend/admin.php');
 
     }
+    
 }
