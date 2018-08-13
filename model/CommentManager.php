@@ -28,7 +28,7 @@ class CommentManager extends Manager
         $req = $this->_db->prepare('INSERT INTO comment (postid, author, comment, createdCom) VALUES(:postid, :author, :comment, NOW())');
         $req->bindValue(':author', $comment->getAuthor(), PDO::PARAM_STR);
         $req->bindValue(':comment', $comment->getComment(), PDO::PARAM_STR);
-        $post = new Post(['id' =>$comment['id']]);
+        $req->bindValue(':postid', $comment->getPostId(), PDO::PARAM_INT);
         $req->execute();
     }
 
@@ -70,7 +70,7 @@ class CommentManager extends Manager
             $post = new Post(['id' =>$comment['id'],'title' => $comment['title']]);
             $com = new Comment([ 'author' => $comment['author'], 'comment' => $comment['comment'] , 'createdCom' => $comment['createdCom'] , 'status' =>$comment['status'], 'post' => $post ]);
             $signaledList[$i++]= $com;
-           
+          
         }
         $req->closeCursor();
         return $signaledList;

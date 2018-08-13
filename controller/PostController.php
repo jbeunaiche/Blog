@@ -111,5 +111,5 @@ class PostController
         require('view/frontend/admin.php');
 
     }
-    
+  
 }
