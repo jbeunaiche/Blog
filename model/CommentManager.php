@@ -59,7 +59,7 @@ class CommentManager extends Manager
      * Get list signaled comments
      */
 
-  /**  public function getSignaled()
+    public function getSignaled()
     {
         $signaledList = array();
         $req = $this->_db->query('SELECT comment.*, post.title FROM comment LEFT JOIN post ON comment.postid = post.id WHERE status > 0');
@@ -76,7 +76,7 @@ class CommentManager extends Manager
         return $signaledList;
 
     }
-   
+  /** 
     public function countComments($postid)
     {
 		$req = $this->_db->prepare('SELECT COUNT(*) FROM comment WHERE postid = :postid');
