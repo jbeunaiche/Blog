@@ -111,5 +111,13 @@ class PostController
         require('view/frontend/admin.php');
 
     }
+    public function action()
+    {
+        if (method_exists($this, $method)) {
+            
+        } else {
+            header ('Location: view/frontend/page404.php'); 
+        }
+    }
   
 }

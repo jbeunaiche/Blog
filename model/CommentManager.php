@@ -25,11 +25,20 @@ class CommentManager extends Manager
      */
     public function addComment(Comment $comment)
     {
-        $req = $this->_db->prepare('INSERT INTO comment (postid, author, comment, createdCom) VALUES(:postid, :author, :comment, NOW())');
-        $req->bindValue(':author', $comment->getAuthor(), PDO::PARAM_STR);
-        $req->bindValue(':comment', $comment->getComment(), PDO::PARAM_STR);
-        $req->bindValue(':postid', $comment->getPostId(), PDO::PARAM_INT);
+        $comlists = array();
+        $i = 0;
+        $req = $this->_db->prepare('INSERT INTO comment (postid, author, comment, createdCom) VALUES(?, ?, ?, NOW())');
+        //$req->bindValue(':author', $comment->getAuthor(), PDO::PARAM_STR);
+       // $req->bindValue(':comment', $comment->getComment(), PDO::PARAM_STR);
+       // $req->bindValue(':postid', $comment->getPostId(), PDO::PARAM_INT);
+        
         $req->execute();
+        $post = new Post(['id' => $_POST['id']]);
+        $com = new Comment([ 'author' => $_POST['author'], 'comment' => $_POST['comment'] , 'post' => $post ]);
+        $comlists[$i++] = $com;
+        
+        return $comlists;
+        
     }
 
     /**
