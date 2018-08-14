@@ -7,6 +7,7 @@ require('controller/CommentController.php');
 $commentController = new CommentController();
 $postController    = new PostController();
 $memberController  = new MemberController();
+
 try
 {
     if (isset($_GET['action']))
@@ -26,7 +27,10 @@ try
                 header ('Location: view/frontend/page404.php'); 
             }
         }
-        
+        else if($_GET['action'] == NULL)
+        {
+            $postController->error();
+        }
         elseif ($_GET['action'] == 'signaledComments')
         {
             if (isset($_SESSION['pseudo']))

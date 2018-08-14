@@ -78,7 +78,7 @@ class PostManager extends Manager
 	{   //DATE_FORMAT(created, \'%d/%m/%Y à %Hh%imin%ss\') AS created
 		$listPosts = array();
 		$i = 0;
-		$req = ('SELECT a.id, a.title, a.resume, a.content, a.created, COUNT(b.postid) AS nb  FROM post a LEFT JOIN comment b ON b.postid = a.id   GROUP BY
+		$req = ('SELECT a.id, a.title, a.resume, a.content, DATE_FORMAT(a.created, \'%d/%m/%Y à %Hh%imin%ss\') AS created, COUNT(b.postid) AS nb  FROM post a LEFT JOIN comment b ON b.postid = a.id   GROUP BY
     a.id ORDER BY a.created DESC ');
 		if ($debut != - 1 || $limite != - 1)
 		{
@@ -93,6 +93,7 @@ class PostManager extends Manager
 			
 			//$nbcom = new Comment(['id' => $post['id']]);
 			$art = new Post(['id' => $post['id'], 'title' => $post['title'], 'resume' => $post['resume'] , 'created' => $post['created'], 'nb' => $post['nb'] ]);
+			
 			$listPosts[$i++] = $art;
 			var_dump ($post['nb']);
 		}

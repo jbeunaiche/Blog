@@ -14,6 +14,7 @@ class PostController
 
     public function listPosts()
     {
+        
         $postManager = new PostManager($_GET);
         $posts       = $postManager->getPosts();   
         require('view/frontend/home.php');
@@ -111,10 +112,10 @@ class PostController
         require('view/frontend/admin.php');
 
     }
-    public function action()
+    public function error()
     {
-        if (method_exists($this, $method)) {
-            
+        if (method_exists($this, $methode)) {
+            return true;
         } else {
             header ('Location: view/frontend/page404.php'); 
         }
