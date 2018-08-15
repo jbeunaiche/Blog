@@ -42,8 +42,9 @@ class CommentController
         }
         else
         {
-            
+            $_SESSION['flash'] = 'Le commentaire n\'est plus signalé !';
             header("Location:" . $_SERVER['HTTP_REFERER'] . "");
+            exit();
             
         }
     }

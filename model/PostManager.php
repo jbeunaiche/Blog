@@ -102,24 +102,7 @@ class PostManager extends Manager
 		
 		$req->closeCursor();
 		return $listPosts;
-	} /**
-public function getSignaled()
-    {
-        $signaledList = array();
-        $req = $this->_db->query('SELECT comment.*, post.title FROM comment LEFT JOIN post ON comment.postid = post.id WHERE status > 0');
-        $i = 0; 
-        $req->setFetchMode(PDO::FETCH_ASSOC);
-        while ($comment = $req->fetch())
-        {
-            $post = new Post(['id' =>$comment['id'],'title' => $comment['title']]);
-            $com = new Comment([ 'author' => $comment['author'], 'comment' => $comment['comment'] , 'createdCom' => $comment['createdCom'] , 'status' =>$comment['status'], 'post' => $post ]);
-            $signaledList[$i++]= $com;
-          
-        }
-        $req->closeCursor();
-        return $signaledList;
-
-    }*/
+	}
 
 
 }
