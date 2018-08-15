@@ -95,7 +95,7 @@ class PostManager extends Manager
 			$art = new Post(['id' => $post['id'], 'title' => $post['title'], 'resume' => $post['resume'] , 'created' => $post['created'], 'nb' => $post['nb'] ]);
 			
 			$listPosts[$i++] = $art;
-			var_dump ($post['nb']);
+			//var_dump ($post['nb']);
 		}
 		
 		
