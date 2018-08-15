@@ -88,7 +88,7 @@
           <label for="comment">Commentaire</label><br />
           <textarea class="form-control" rows="3" id="comment" name="comment"></textarea>
         </div>
-        <input type="hidden" name="postId" value="<?=$post->getId();?>" />
+        <input type="hidden" name="postid" value="<?=$post->getId();?>" />
         <button type="submit" class="btn btn-primary">Valider</button>
       </form>
     </div>
