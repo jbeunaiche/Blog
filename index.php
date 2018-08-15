@@ -8,7 +8,7 @@ require('controller/CommentController.php');
 $commentController = new CommentController();
 $postController    = new PostController();
 $memberController  = new MemberController();
-$errorController  = new ErrorController();
+//$errorController  = new ErrorController();
 
 try
 {
