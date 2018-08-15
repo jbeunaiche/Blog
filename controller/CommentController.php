@@ -14,7 +14,7 @@ class CommentController
     public function addComment($varComment)
     {
         $postManager    = new PostManager();
-        $post = new Post(['id' => $_POST['id']]);
+        $post = $postManager = new Post(['postid' => $_POST['postid']]);
         $comment        = new Comment($varComment);
         $commentmanager = new CommentManager();
         $commentmanager->addComment($comment);

@@ -3,10 +3,12 @@ session_start();
 require('controller/PostController.php');
 require('controller/MemberController.php');
 require('controller/CommentController.php');
+//require('controller/ErrorController.php');
 
 $commentController = new CommentController();
 $postController    = new PostController();
 $memberController  = new MemberController();
+$errorController  = new ErrorController();
 
 try
 {
@@ -16,6 +18,10 @@ try
         {
             $postController->listPosts();
         }
+        //else if ($_GET['action ']== NULL) 
+        //{
+         //   $errorController->error();
+       // }
         elseif ($_GET['action'] == 'post')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0 )
@@ -27,10 +33,7 @@ try
                 header ('Location: view/frontend/page404.php'); 
             }
         }
-        else if($_GET['action'] == NULL)
-        {
-            $postController->error();
-        }
+        
         elseif ($_GET['action'] == 'signaledComments')
         {
             if (isset($_SESSION['pseudo']))

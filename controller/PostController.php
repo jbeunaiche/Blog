@@ -112,13 +112,6 @@ class PostController
         require('view/frontend/admin.php');
 
     }
-    public function error()
-    {
-        if (method_exists($this, $methode)) {
-            return true;
-        } else {
-            header ('Location: view/frontend/page404.php'); 
-        }
-    }
+    
   
 }

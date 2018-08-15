@@ -31,6 +31,7 @@ class CommentManager extends Manager
         $req->bindValue(':comment', $comment->getComment(), PDO::PARAM_STR);
         $req->bindValue(':postid', $comment->getPost()->getId(), PDO::PARAM_INT);
         $req->execute();
+       
         
         
     }
