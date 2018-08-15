@@ -14,10 +14,12 @@ class CommentController
     public function addComment($varComment)
     {
         $postManager    = new PostManager();
-        $postManager = new Post(['id' => $_POST['postid']]);
+        $post = new Post(['id' => $_POST['postid']]); 
         $comment        = new Comment($varComment);
         $commentmanager = new CommentManager();
+        $comment-> setPost($post);
         $commentmanager->addComment($comment);
+         
         if ($commentmanager === false)
         {
             throw new Exception('Impossible d\'ajouter l\'article!');

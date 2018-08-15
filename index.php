@@ -48,7 +48,7 @@ try
         }
         elseif ($_GET['action'] == 'addComment')
         {
-            if (isset($_POST['postId']) > 0)
+            if (isset($_POST['postid']) > 0)
             {
                 if (!empty($_POST['author']) && !empty($_POST['comment']))
                 {
