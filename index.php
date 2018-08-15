@@ -3,12 +3,12 @@ session_start();
 require('controller/PostController.php');
 require('controller/MemberController.php');
 require('controller/CommentController.php');
-//require('controller/ErrorController.php');
+require('controller/ErrorController.php');
 
 $commentController = new CommentController();
 $postController    = new PostController();
 $memberController  = new MemberController();
-//$errorController  = new ErrorController();
+$errorController  = new ErrorController();
 
 try
 {
@@ -18,10 +18,7 @@ try
         {
             $postController->listPosts();
         }
-        //else if ($_GET['action ']== NULL) 
-        //{
-         //   $errorController->error();
-       // }
+        
         elseif ($_GET['action'] == 'post')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0 )
@@ -208,6 +205,9 @@ try
             {
                 throw new Exception('Erreur');
             }
+        }
+        else {
+            $errorController->error();
         }
         
     }
