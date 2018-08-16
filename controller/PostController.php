@@ -13,7 +13,7 @@ class PostController
 {
 
     public function listPosts()
-    {
+    {  
         
         $postManager = new PostManager($_GET);
         $posts       = $postManager->getPosts();   

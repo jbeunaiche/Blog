@@ -91,8 +91,9 @@ class PostManager extends Manager
 		
 		{
 			
-			//$nbcom = new Comment(['id' => $post['id']]);
-			$art = new Post(['id' => $post['id'], 'title' => $post['title'], 'resume' => $post['resume'] , 'created' => $post['created'], 'nb' => $post['nb'] ]);
+			$comment = new Comment(['id' =>$post['nb']]);
+			$art = new Post(['id' => $post['id'], 'title' => $post['title'], 'resume' => $post['resume'] , 'created' => $post['created'], 'comments' => $comment ]);
+			
 			
 			$listPosts[$i++] = $art;
 			//var_dump ($post['nb']);

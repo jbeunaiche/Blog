@@ -4,6 +4,7 @@
 class Post
 
 {
+   private $comments;
     /**
      * @var
      */
@@ -57,7 +58,18 @@ class Post
   }
  }
  // Getters
+ public function getComments()
+ {
+  return $this->comments;
+ }
+public
 
+	function setComments($comments)
+	{
+		
+			$this->comments = $comments;
+		
+	}
     /**
      * @return mixed
      */
